@@ -1,0 +1,226 @@
+.movil{
+    @include size(30px, 30px);
+    cursor: pointer;
+}
+
+.ilustra{
+    display: block;
+    width: 75%;
+    height: auto;
+    margin-top: 10%;
+    @extend %mx-center;
+}
+
+.icon{
+    display: inline-block;
+    @include size(20px, 20px);
+}
+
+.icon-search{
+    mask: url('../img/icon-search.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+}
+
+.icon-close{
+    mask: url('../img/button-close.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+}
+
+.icon-face{
+    mask: url('../img/icon_facebook.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $icon;
+    &:hover {
+        background-color: $primary;
+    }
+}
+
+.icon-twit{
+    mask: url('../img/icon-twitter.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $icon;
+    &:hover {
+        background-color: $primary;
+    }
+}
+
+.icon-insta{
+    mask: url('../img/icon_instagram.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $icon;
+    &:hover {
+        background-color: $primary;
+    }
+}
+
+
+.icon-search-empty{
+    display: inline-block;
+    background-image: url('../img/icon-busqueda-sin-resultado.svg');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    height: 100px;
+    width: 100%;
+    margin-top: 15%;
+}
+
+.icon-fav{
+    mask: url('../img/icon-favoritos.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $secondary;
+    width: 100%;
+}
+
+.icon-fav-empty{
+    display: inline-block;
+    background-image: url('../img/icon-mis-gifos-sin-contenido.svg');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    height: 100px;
+    width: 100%;
+    margin-top: 15%;
+}
+
+.icon-mis{
+    mask: url('../img/icon-mis-gifos.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $secondary;
+    width: 100%;
+}
+
+.icon-mis-empty{
+    display: inline-block;
+    background-image: url('../img/icon-mis-gifos-sin-contenido.svg');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    height: 100px;
+    width: 100%;
+    margin-top: 15%;
+}
+
+.icon-left{
+    mask: url('../img/button-left.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    border: solid 2px $primary;
+    padding: 1%;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.icon-right{
+    mask: url('../img/button-right.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    border: solid 2px $primary;
+    padding: 1%;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.icon-Hfav{
+    mask: url('../img/icon-fav-hover.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    margin: 2px;
+}
+
+.icon-Afav{
+    mask: url('../img/icon-fav-active.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    margin: 2px;
+}
+
+.icon-trash{
+    mask: url('../img/icon_trash.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    margin: 2px;
+}
+
+.icon-max{
+    mask: url('../img/icon-max.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    margin: 2px;
+}
+
+.icon-download{
+    mask: url('../img/icon-download.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    margin: 2px;
+}
+
+.icon-link{
+    mask: url('../img/icon-link.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $primary;
+    margin: 2px;
+}
+
+/* dark mode */
+
+.icon-plus-d{
+    background-color: $white !important;
+}
+
+/* Desktop mode */
+
+@media (min-width:550px){
+    .movil{
+        @include size(50px, 50px);
+    }
+    .icon-plus{
+        mask: url('../img/button-close.svg');
+        mask-repeat: no-repeat;
+        mask-position: 40% 28%;
+        background-color: $primary;
+        transform: rotate(45deg);
+    }
+
+    .ilustra{
+        margin-top: 5%;
+        width: 40%;
+    }
+
+    .icon-mis-empty,
+    .icon-search-empty,
+    .icon-fav-empty{
+        margin-top: 5%;
+    }
+
+    .icon-face,
+    .icon-insta,
+    .icon-twit{
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+}

@@ -1,0 +1,99 @@
+.carrousel{
+    @include size(100%, 200px);
+    margin: 8% 0;
+    padding: 0 8%;
+    overflow-x: scroll;
+    display: flex;
+}
+
+.right, .left{
+    display: none;
+    width: 10%;
+    margin-top: 3%;
+    margin-bottom: 8%;
+    button{
+        height: 40px;
+        width: 40px;
+        display: block;
+        border: solid 2px $primary;
+        cursor: pointer;
+        &:hover{
+            background-color: $primary;
+            i{
+                background-color: $white;
+            }
+        }
+    }
+}
+
+.gif-carrousel{
+    @include size(243px, 187px);
+    padding-right: 8%;
+}
+
+/*dark mode styling*/
+
+.right, .left{
+    .dark{
+        background-color: rgba($color: $black-dark, $alpha: 1) !important;
+        border-color: $white !important;
+        &:hover{
+            border-color: $black !important;
+            background-color: $white !important;
+        }
+        &:hover .icon-left,
+        &:hover .icon-right
+        {
+            background-color: $black !important;
+        }
+        .icon-left, .icon-right{
+            background-color: $white !important;
+        }
+    }
+}
+
+/* Desktop mode */
+
+@media (min-width:550px){
+    .container-car{
+        display: flex;
+    }
+    
+    .right, .left{
+        display: flex;
+    }
+    
+    .right button{
+        margin-top: 85%;
+        margin-left: 55%;
+    }
+    
+    .left button{
+        margin-top: 85%;
+        margin-left: 15%;
+    }
+
+    .carrousel{
+        margin-top: 3%;
+        margin-bottom: 8%;
+        @include size(80%, 276px);
+        padding: 0;
+        scrollbar-width: none;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+
+    .gif-carrousel{
+        &:first-child{
+            padding-left: 7%;    
+            @include size(357px !important, 275px !important);
+        }
+        &:last-child{
+            padding-right: 7%;    
+        }
+        @include size(357px !important, 275px !important);
+        padding-right: 4%;
+        padding-left: 4%;
+    }
+}

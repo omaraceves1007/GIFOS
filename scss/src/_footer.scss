@@ -1,0 +1,57 @@
+footer{
+    @include size(100%, auto);
+    text-align: center;
+    border-bottom: $primary 3px solid;
+    h4{
+        padding-top: 8%;
+    }
+
+    div{
+        margin-top: 5%;
+        a{
+            margin: 0 3%;
+        }
+    }
+
+    p{
+        padding-top: 10%;
+        padding-bottom: 3%;
+    }
+}
+
+/*dark mode styling*/
+
+footer.dark{
+    border-bottom: $black 3px solid;
+}
+
+/* Desktop mode */
+
+@media (min-width:550px){
+    footer{
+        display: flex;
+        padding: 2% 3%;
+        h4{
+            padding-top: 0;
+            width: 15%;
+        }
+    
+        div{
+            margin-top: 0;
+            width: 15%;
+            text-align: start;
+            a{
+                margin: 0 1%;
+                align-self: start;
+            }
+        }
+        
+        p{  
+            text-align: end;
+            width: 70%;
+            padding-top: 0%;
+            padding-bottom: 0%;
+            padding-right: 3%;            
+        }
+    }
+}

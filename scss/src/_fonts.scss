@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@font-face{
+    font-family: 'Roboto-Regular';
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+@font-face{
+    font-family: 'Roboto-Bold';
+    src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+@mixin basic($pad, $wid, $col, $ali) {
+    padding-top: $pad;
+    width: $wid;
+    color: $col;
+    text-align: $ali;
+}
+
+%montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+%roboto-regular{
+    font-family: "Roboto-Regular", sans-serif;
+}
+
+%roboto-bold{
+    font-family: "Roboto-Bold", sans-serif;
+}
+
+.title{
+    @include basic( 5%, 75%, $primary, center);
+    @extend %mx-center;
+    @extend %montserrat;
+    span{
+        color: $secondary;
+    }
+}
+
+.title-empty{
+    @include basic( 5%, 75%, $secondary, center);
+    @extend %mx-center;
+    @extend %montserrat;
+    span{
+        color: $secondary;
+    }
+}
+.options{
+    @include basic( 8%, 100%, $primary, center);
+    p{
+        padding-top: 2%;
+        width: 50%;
+        @extend %mx-center;
+    }
+}
+
+p, footer, h4, li{
+    @extend %montserrat;
+}
+
+footer p{
+    font-size: 14px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/*clase link activo*/
+
+.active{
+    color: $active !important;
+    hr{
+        display: none !important;
+    }
+}
+
+/*dark mode styling temporal coment*/
+
+// p, footer, h1, h2, h3, h4, 
+.text-white {
+    color: $white !important;
+}
+
+/* Desktop mode */
+
+@media (min-width:550px){
+    .title{
+        width: 50%;
+        font-size: 35px;
+    }
+    .options{
+        padding-top: 5%;
+    }
+    .title-empty{
+        padding-top: 2%;
+    }
+}

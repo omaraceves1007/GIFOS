@@ -1,0 +1,103 @@
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba($color: $white, $alpha: 1);
+    @include size( 100%, 100%);
+    .close-modal {
+        position: fixed;
+        background-color: transparent;
+        border: none;
+        top: 10%;
+        right: 5%;
+        cursor: pointer;
+    }
+    .cont-modal {
+        position: fixed;
+        top: 20%;
+        left: 5%;
+        @include size( 90%, 300px);
+        .body-modal {
+            @include size( 100%, 250px);
+            img {
+                @include size( 100%, 250px);
+            }
+        }
+        .footer-modal {
+            @include size( 100%, 50px);
+            display: flex;
+            .data {
+                width: 70%;
+                p {
+                    width: 100%;
+                    padding-left: 5%;
+                    padding-top: 3%;
+                }
+            }
+            .actions {
+                width: 30%;
+                button {
+                    cursor: pointer;
+                    opacity: 0.5;
+                    border: 1px solid #9CAFC3;
+                    border-radius: 6px;
+                    margin-top: 10%;
+                    margin-left: 15%;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Desktop mode */
+
+@media (min-width:550px) {
+    .modal {
+        .close-modal {
+        top: 10%;
+        right: 15%;
+        }
+        .cont-modal {
+            @include size( 70%, 300px);
+            left: 15%;
+            .body-modal {
+                @include size( 100%, 400px);
+                img {
+                    display: block;
+                    @include size( 60%, 400px);
+                    margin: 0 auto;
+                }
+            }
+            .footer-modal {
+                @include size( 60%, 80px);
+                display: flex;
+                margin: 0 auto;
+                padding-top: 1%;
+                .data {
+                    width: 80%;
+                    p {
+                        width: 100%;
+                        padding-left: 5%;
+                        padding-top: 1%;
+                    }
+                }
+                .actions {
+                    width: 20%;
+                    text-align: end;
+                    button {
+                        cursor: pointer;
+                        margin-left: 10%;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,124 @@
+.logo{
+    grid-row: 1;
+    grid-column: 1/2;
+    width: 100%;
+    position: absolute;
+    left: 5%;
+    top: 2%;
+}
+
+.menu-logo{
+    position: absolute;
+    right: 5%;
+    top: 3%;
+    cursor: pointer;
+}
+
+.close{
+    display: none;
+}
+
+.menu{
+    display: none;
+    grid-row: 1;
+    grid-column: 2/3;
+    width: 100%;
+    position: fixed;
+    top: 50px;
+    text-align: center;
+    background-color: rgba($color: $primary, $alpha: .9);
+    height: 100vh;
+    @extend %montserrat;
+    li{
+        margin: 7%;
+        opacity: 1;
+        color: $white;
+        cursor: pointer;
+        font-weight: 600;
+        hr{
+            width: 15%;
+            margin: 2% auto;
+        }
+        &:hover > hr{
+            color: $secondary;
+        }
+        &:last-child{
+            display: none;
+        }
+    }
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none !important;
+}
+
+/*dark mode styling*/
+
+.menu-nig{
+    background-color: rgba($color: $black, $alpha: 1) !important;
+}
+
+.plus-dark{
+    background-color: rgba($color: $black-ligth, $alpha: 1) !important;
+    border-color: $white !important;
+    &:hover{
+        border-color: $black !important;
+        background-color: $white !important;
+        > .icon-plus-d{
+            background-color: $black !important;
+        }
+    }
+}
+
+/* Desktop mode */
+
+@media (min-width:550px){
+    .menu-nig{
+        background-color: rgba($color: $black-ligth, $alpha: 1) !important;
+    }
+    .close, .open{
+        display: none;
+    }
+    .menu{
+        height: auto;
+        position: unset;
+        display: initial;
+        margin-top: 2%;
+        margin-right: 15%;
+        grid-row: 1;
+        grid-column: 2/3;
+        background-color: $white;
+        text-align: right;
+        width: 100%;
+        li{
+            display: inline;
+            margin: 0 3%;
+            color: $primary;
+            hr{
+                display: none;
+            }
+            &:hover{
+                text-decoration-line: underline;
+                text-decoration-color: $secondary;
+                text-decoration-thickness: 3px;
+                text-underline-offset: 7px;
+            }
+            &:last-child{
+                display: inline;
+                border-radius: 50px;
+                border: solid 2px $primary;
+                padding: 1%;
+                &:hover{
+                    background-color: $primary;
+                } 
+                &:hover > i {
+                    background-color: $white;
+                }
+            }
+        }
+    }
+}

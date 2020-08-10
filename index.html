@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="img/logo-desktop.svg">
+    <title>GifOs</title>
+    <link rel="stylesheet" href="scss/main.css">
+</head>
+
+<body>
+    <header>
+        <!-- data-header="components/nav.html" -->
+        <nav class="grid nav-container">
+            <img id="home" class="movil logo" src="img/logo-desktop.svg" alt="Logo Gifos">
+            <img class="menu-logo open" src="img/burger.svg" alt="Burger logo">
+            <img class="menu-logo close" src="img/button-close.svg" alt="Close logo">
+            <ul class="menu animate">
+                <li id="mode">MODO NOCTURNO
+                    <hr>
+                </li>
+                <li id="favorites">FAVORITOS
+                    <hr>
+                </li>
+                <li id="my-gif">MIS GIFOS
+                    <hr>
+                </li>
+                <li id="plus">
+                    <i class="icon icon-plus">&nbsp;</i>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="grid grid-container">
+        <section id="search-section" class="search-section ">
+            <h2 class="title"> Inspírate, busca, guarda y crea los mejores <span>GIFOS</span> </h2>
+            <img class="ilustra" src="img/ilustra_header.svg" alt="Ilustración principal">
+            <div class="buscar grid">
+                <input type="text" name="buscar" id="buscar" placeholder="Buscar GIFOS y más">
+                <button id="search-btn"><i class="icon icon-search"></i></button>
+                <button id="delete-btn"><i class="icon icon-close"></i></button>
+                <ul>
+                </ul>
+            </div>
+            <article class="options">
+                <h4><strong>Trending:</strong></h4>
+                <p id="trending-list">
+                </p>
+            </article>
+        </section>
+        <section id="result-section" class="search-result-section hide">
+            <h3 class="title"><strong id="resBusqueda">Búsqueda</strong></h3>
+            <div class="">
+                <i class="icon-search-empty"></i>
+                <h4 class="title-empty"> Intenta con otra búsqueda </h4>
+            </div>
+            <div class="grid grid-busqueda result-row">
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div class="hov">
+                        <div class="buttons">
+                            <button class="button-t"><i class="icon icon-Hfav"></i></button>
+                            <button class="button-t"><i class="icon icon-Afav"></i></button>
+                            <button class="button-t"><i class="icon icon-trash"></i></button>
+                            <button class="button-t"><i class="icon icon-max"></i></button>
+                            <button class="button-t"><i class="icon icon-download"></i></button>
+                            <button class="button-t"><i class="icon icon-link"></i></button>
+                        </div>
+                    </div>
+                    <p class="user">User</p>
+                    <p class="title-gif">Perro al agua</p>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div class="hov">
+                        <div class="buttons">
+                            <button class="button-t"><i class="icon icon-Hfav"></i></button>
+                            <button class="button-t"><i class="icon icon-Afav"></i></button>
+                            <button class="button-t"><i class="icon icon-trash"></i></button>
+                            <button class="button-t"><i class="icon icon-max"></i></button>
+                            <button class="button-t"><i class="icon icon-download"></i></button>
+                            <button class="button-t"><i class="icon icon-link"></i></button>
+                        </div>
+                    </div>
+                    <p class="user">User</p>
+                    <p class="title-gif">Perro al agua</p>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="result-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+            </div>
+            <div class="ver-mas">
+                <button>VER MÁS</button>
+            </div>
+        </section>
+        <section id="fav-section" class="fav-section hide">
+            <i class="icon icon-fav"></i>
+            <h3 class="title"><strong>Favoritos</strong></h3>
+            <div class="">
+                <i class="icon-fav-empty"></i>
+                <h4 class="title-empty"> "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!" </h4>
+            </div>
+            <div class="grid fav-items">
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+            </div>
+            <div class="ver-mas">
+                <button>VER MÁS</button>
+            </div>
+        </section>
+        <section id="mis-section" class="fav-section hide">
+            <i class="icon icon-mis"></i>
+            <h3 class="title"><strong>Mis GIFOS</strong></h3>
+            <div class="">
+                <i class="icon-mis-empty"></i>
+                <h4 class="title-empty"> Anímate a crear tu primer GIFO!</h4>
+            </div>
+            <div class="grid fav-items">
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+                <div class="fav-item">
+                    <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
+                    <div></div>
+                </div>
+            </div>
+            <div class="ver-mas">
+                <button>VER MÁS</button>
+            </div>
+        </section>
+        <section class="carrousel-section">
+            <h3 class="title"><strong>Trending GIFOS</strong></h3>
+            <p>Mira los últimos GIFOS de nuestra comunidad.</p>
+            <div class="container-car ">
+                <div class="right">
+                    <button><i class="icon icon-left"></i></button>
+                </div>
+                <div id="carrousel" class="carrousel">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif"
+                        alt="clavado perruno">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif"
+                        alt="gato enojado">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/l2Sqc3POpzkj5r8SQ/giphy.gif"
+                        alt="corre forest">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/jnQYWZ0T4mkhCmkzcn/giphy.gif"
+                        alt="bebe llorón">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/enp5EEnd1wlLq/giphy.gif"
+                        alt="gato llora de alegría">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif"
+                        alt="clavado perruno">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif"
+                        alt="gato enojado">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/l2Sqc3POpzkj5r8SQ/giphy.gif"
+                        alt="corre forest">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/jnQYWZ0T4mkhCmkzcn/giphy.gif"
+                        alt="bebe llorón">
+                    <img class="gif-carrousel" src="https://media.giphy.com/media/enp5EEnd1wlLq/giphy.gif"
+                        alt="gato llora de alegría">
+                </div>
+                <div class="left">
+                    <button><i class="icon icon-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- data-footer="components/footer.html" -->
+        <h4><strong>Compartir en:</strong></h4>
+        <div>
+            <a href="https://www.facebook.com"><i class="icon icon-face"></i></a>
+            <a href="https://www.twitter.com"><i class="icon icon-twit"></i></a>
+            <a href="https://www.instagram.com"><i class="icon icon-insta"></i></a>
+        </div>
+        <p>© GIFOS 2020 All Rights Reserved</p>
+    </footer>
+    <script src="js/script.js" type="module"></script>
+</body>
+
+</html>

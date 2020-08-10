@@ -1,0 +1,236 @@
+.buscar{
+    width: 100%;
+    height: 40px;
+    // grid-template: 100% / 80% 10%;
+    grid-template-columns: 80% 10%;
+    // grid-gap: 10%;
+    grid-column-gap: 10%;
+    align-content: center;
+    border: $primary 1px solid;
+    border-radius: 27px;
+    cursor: text;
+    input{
+        grid-column: 1 / 2;
+        border: none;
+        background: none;
+        height: 30px;
+        width: 82%;
+        margin-left: 18%;
+    }
+    button{
+        grid-column: 2 / 3;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        &#delete-btn{
+            display: none;
+        }
+    }
+    button, input{
+        margin-top: 5px;
+    }
+    ul{
+        display: none;
+    }
+}
+
+.result-item{
+    margin-top: 13%;
+    @include size(100%, 120px);
+    img{
+        @include size(100%, 120px);
+    }
+    div.hov{
+        display: none;
+        position: absolute;
+        top: 0;
+        background-color: rgba($color: $primary, $alpha: 1);
+        opacity: 0;
+    }
+    p.user{
+        display: none;
+        @extend %roboto-regular;
+        font-size: 15px;
+        color: white;
+        position: absolute;
+        bottom: 60px;
+        left: 10px;
+    }
+    p.title-gif{
+        display: none;
+        @extend %roboto-bold;
+        font-size: 16px;
+        color: white;
+        position: absolute;
+        bottom: 30px;
+        left: 10px;
+    }
+}
+
+.result-row{
+    @extend %mx-center;
+}
+
+.ver-mas{
+    display: grid;
+    grid-template: 100% / 35% 30% 35%;
+    margin-top: 15%;
+    button{
+        grid-column: 2 / 3;
+        @extend %montserrat;
+        background-color: $white;
+        color: $primary;
+        padding: 7% 13%;
+        border-radius: 25px;
+        border: solid 1px $primary;
+        cursor: pointer;
+        &:hover{
+            background-color: $primary;
+            color: $white;
+        }
+    }   
+}
+
+.buttons{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    text-align: end;
+    display: none;
+    .button-t{
+        cursor: pointer;
+        background-color: $white;
+        border-radius: 6px;
+        opacity: 0.8;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+
+/*dark mode styling*/
+
+.buscar-d{
+    border: solid 1px $white !important;
+}
+
+.button-b{
+    background-color: $black-ligth !important;
+    border: solid 1px $white !important;
+    color: $white !important;
+    &:hover{
+        background-color: $white !important;
+        color: $black !important;
+    }
+}
+
+input#buscar.dark-in {
+    color: $white !important;
+}
+
+/* Desktop mode */
+
+@media (min-width:550px){
+    .buscar{
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .autocomplete{
+        height: 200px;
+        grid-template-columns: 10% 80% 10%;
+        grid-column-gap: 0;
+        input{
+            grid-row: 1;
+            grid-column: 2 / 3;
+            margin-left: 0;
+            width: 100%;
+        }
+        button#search-btn{
+            grid-row: 1;
+            grid-column: 1 / 2;
+            height: 30px
+        }
+        button#delete-btn{
+            display: block;
+            grid-row: 1;
+            grid-column: 3 / 4;
+            height: 30px
+        }
+        ul{
+            display: block;
+            grid-column: 1 / 4;
+            padding-top: 2%;
+            height: 160px;
+            width: 100%;
+        }
+    }
+
+    .autocomplete ul li{
+        width: 100%;
+        height: 27px;
+        margin: 2px;
+        display: flex;
+        cursor: pointer;
+            &:hover{
+                background-color: rgba($color: $active, $alpha: 0.5)
+            }
+        button#search-btn{
+            width: 10%;
+            margin: 0;
+        }
+        p{
+            width: 90%;
+            align-self: center;
+            padding-left: 5%;
+        }
+    }
+
+    .result-item{
+        margin-top: 8%;
+        position: relative;
+        @include size(100%, 200px);
+        img, div{
+            @include size(100%, 200px);
+        }
+        div.hov{
+            position: absolute;
+            top: 0;
+            background-color: rgba($color: $primary, $alpha: 1);
+            opacity: 0;
+            display: block;
+            z-index: 99;
+            &:hover{
+                opacity: 0.8;
+                .buttons{
+                    display: block;
+                    top: 3%;
+                    right: 3%;
+                }
+                ~ p{
+                    display: block;
+                    z-index: 100;
+                }
+            }
+        }
+    }
+
+    .ver-mas{
+        margin-top: 5%;
+        button{
+            width: 30%;
+            justify-self: center;
+            background-color: $white;
+            color: $primary;
+            padding: 1% 3%;
+            border-radius: 25px;
+            border: solid 1px $primary;
+            cursor: pointer;
+            &:hover{
+                background-color: $primary;
+                color: $white;
+            }
+        }   
+    }
+}

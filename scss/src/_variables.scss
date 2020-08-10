@@ -1,0 +1,25 @@
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+%size-auto {
+    width: 100%;
+    height: auto;
+}
+
+%main-margin {
+    margin: 0 5%;
+}
+
+%m-center{
+    margin: auto auto;
+}
+
+%mx-center{
+    margin: 0 auto;
+}
+
+%p-center{
+    padding: auto auto;
+}
