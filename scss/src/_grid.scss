@@ -1,6 +1,6 @@
 .grid{
     display: grid;
-    @extend %size-auto
+    @extend %size-auto;
 }
 
 header{
@@ -15,11 +15,12 @@ header{
 }
 
 .grid-container{
-    grid-template: 40% auto 40% / 100%;
+    grid-template: /* 40% auto 40% */ auto / 100%;
 }
 
 .grid-busqueda {
-    grid-template: 100% / repeat(2, 47%);;
+    grid-template: auto / repeat(2, 47%);
+    // grid-template-columns: repeat(2, 47%);
     grid-column-gap: 6%;
 }
 
@@ -28,18 +29,18 @@ header{
 }
 
 .search-section{
-    grid-row: 1;
+    grid-row: auto;
     @extend %main-margin;
 }
 
 .search-result-section{
-    grid-row: 2;
+    grid-row: auto;
     @extend %main-margin;
     margin-top: 8%;
 }
 
 .carrousel-section{
-    grid-row: 3;
+    grid-row: auto;
     margin-top: 13%;
     background-color: $carrousel;
     h3{
@@ -89,7 +90,7 @@ header{
     }
 
     .grid-busqueda {
-        grid-template: 100% / repeat(4, 24%);;
+        grid-template-columns: repeat(4, 24%);
         grid-column-gap: 2%;
     }
 }

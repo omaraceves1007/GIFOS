@@ -1,9 +1,7 @@
 .buscar{
     width: 100%;
     height: 40px;
-    // grid-template: 100% / 80% 10%;
     grid-template-columns: 80% 10%;
-    // grid-gap: 10%;
     grid-column-gap: 10%;
     align-content: center;
     border: $primary 1px solid;
@@ -103,6 +101,8 @@
         background-color: $white;
         border-radius: 6px;
         opacity: 0.8;
+        border: none;
+        margin: 0 1%;
         &:hover{
             opacity: 1;
         }
@@ -174,7 +174,7 @@ input#buscar.dark-in {
         display: flex;
         cursor: pointer;
             &:hover{
-                background-color: rgba($color: $active, $alpha: 0.5)
+                background-color: rgba($color: $active, $alpha: 0.5);
             }
         button#search-btn{
             width: 10%;

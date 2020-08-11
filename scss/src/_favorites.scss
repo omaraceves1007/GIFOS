@@ -4,7 +4,8 @@
 
 .fav-items{
     margin-top: 8%;
-    grid-template: 100% / repeat(2, 47%);;
+    grid-template: auto / repeat(2, 47%);
+    // grid-template-columns: repeat(2, 47%);
     grid-column-gap: 6%;
     @extend %mx-center;
 }
@@ -27,7 +28,8 @@
 
 @media (min-width:550px){
     .fav-items{
-        grid-template: 100% / repeat(4, 24%);;
+        grid-template: auto / repeat(4, 24%);
+        // grid-template-columns: repeat(4, 24%);
         grid-column-gap: 2%;
         margin-top: 2%;
     }
