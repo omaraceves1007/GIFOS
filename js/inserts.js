@@ -17,18 +17,21 @@ const TYPES_B = {
 let offset = 12;
 let search_list = [];
 
-// Insert trendings
+// Insert trendings \u00A0 unicode
 export function insertTrendingText( trendings ) {
     let parent = DOC.DOC.getElementById( 'trending-list' );
     let text = '';
-    trendings.forEach( ( element, i, arr ) => {
-        if( Object.is( arr.length - 1, i ) ){
-            text = text.concat( `${ element[0].toUpperCase() }${ element.slice( 1 ) } ` );
+    trendings.forEach( ( element, i, arr) => {
+        let item = createEle( 'li' );
+        item.id = element;
+        if( Object.is( arr.length - 1, i ) ) {
+            item.innerHTML = `${ element[0].toUpperCase() }${ element.slice( 1 ) }.`;    
         } else {
-            text = text.concat( `${ element[0].toUpperCase() }${ element.slice( 1 ) }, ` );
+            item.innerHTML = `${ element[0].toUpperCase() }${ element.slice( 1 ) }, `;
         }
-    });
-    parent.innerText = text;
+        item.onclick = () => { search( item.id, false ) };
+        parent.appendChild( item );
+    } );
 }
 
 //insert autocomplete list

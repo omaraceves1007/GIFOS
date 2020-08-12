@@ -32,6 +32,17 @@
     }
 }
 
+ul#trending-list {
+    margin-top: 2%;
+    li {
+        display: inline;
+        cursor: pointer;
+        &:hover {
+            font-weight: 600;
+        }
+    }
+}
+
 .result-item{
     margin-top: 13%;
     @include size(100%, 120px);

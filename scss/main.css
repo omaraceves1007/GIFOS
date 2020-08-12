@@ -792,6 +792,19 @@ header {
   display: none;
 }
 
+ul#trending-list {
+  margin-top: 2%;
+}
+
+ul#trending-list li {
+  display: inline;
+  cursor: pointer;
+}
+
+ul#trending-list li:hover {
+  font-weight: 600;
+}
+
 .result-item {
   margin-top: 13%;
   width: 100%;
