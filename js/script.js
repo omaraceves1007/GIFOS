@@ -6,7 +6,7 @@ import * as GIPHY from './giphy.js';
 import * as INSERTS from './inserts.js';
 import * as SEARCHS from './autocomplete.js';
 
-const MENU = document.querySelector('ul.menu');
+const MENU = BUTTONS.DOC.querySelector('ul.menu');
 let is_dark = false;
 
 let search_arr = [];
@@ -26,10 +26,10 @@ window.onresize = () => {
 
 // Home Button
 BUTTONS.HOME.addEventListener('click',() =>{
-    document.getElementById('search-section').classList.remove('hide');
-    document.getElementById('result-section').classList.add('hide');
-    document.getElementById('fav-section').classList.add('hide');
-    document.getElementById('mis-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('search-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('result-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
 })
 
 // botones de menu hamburguesa
@@ -65,18 +65,18 @@ BUTTONS.DARK_B.addEventListener('click', () => {
 
 // Show Favorites secction
 BUTTONS.FAVORITES_B.addEventListener('click', () =>{
-    document.getElementById('search-section').classList.add('hide');
-    document.getElementById('result-section').classList.add('hide');
-    document.getElementById('fav-section').classList.remove('hide');
-    document.getElementById('mis-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('search-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('result-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('fav-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
 });
 
 // Show my gifos secction
 BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
-    document.getElementById('search-section').classList.add('hide');
-    document.getElementById('result-section').classList.add('hide');
-    document.getElementById('fav-section').classList.add('hide');
-    document.getElementById('mis-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('search-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('result-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('mis-section').classList.remove('hide');
 });
 
 // Delete text search
