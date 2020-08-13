@@ -22,6 +22,9 @@ function createItemCard( gifs ) {
         let image = INSERT.createEle( 'img' );
             image.src = gif.url;
             image.alt = gif.title;
+        if( window.screen.width < 550 ){
+            image.onclick = () => { INSERT.max( gif, gifs, false ) };
+        }
         let hover = INSERT.createEle( 'div', 'car-hover' );
         let buttons = INSERT.createEle( 'div', 'buttons-car' );
         let info = INSERT.createEle( 'div', 'car-info' );
