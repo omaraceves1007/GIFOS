@@ -10,6 +10,7 @@ export const PLUS_B = DOC.getElementById('plus');
 export const SEARCH = DOC.querySelector('#search-btn');
 export const DELETE = DOC.querySelector('#delete-btn');
 export const INPUT_SEARCH = DOC.querySelector('#buscar');
+export const CARROUSEL = DOC.getElementById('carrousel');
 
 // SECTIONS
 export const RESULTS = DOC.getElementById('result-section');

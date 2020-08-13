@@ -5,7 +5,6 @@
 .fav-items{
     margin-top: 8%;
     grid-template: auto / repeat(2, 47%);
-    // grid-template-columns: repeat(2, 47%);
     grid-column-gap: 6%;
     @extend %mx-center;
 }
@@ -20,7 +19,7 @@
         display: none;
         position: absolute;
         top: 0;
-        background-color: rgba($color: $primary, $alpha: 1);
+        background-color: rgba($color: $primary, $alpha: 0.6);
         opacity: 0;
     }
     p.user{
@@ -54,27 +53,11 @@
 @media (min-width:550px){
     .fav-items{
         grid-template: auto / repeat(4, 24%);
-        // grid-template-columns: repeat(4, 24%);
         grid-column-gap: 2%;
         margin-top: 2%;
     }
 
     .fav-item{
-        // margin-top: 8%;
-        // position: relative;
-        // @include size(100%, 200px);
-        // img, div{
-        //     @include size(100%, 200px);
-        // }
-        // div{
-        //     position: absolute;
-        //     top: 0;
-        //     background-color: rgba($color: $primary, $alpha: 1);
-        //     opacity: 0;
-        //     &:hover{
-        //         opacity: 0.7;
-        //     }
-        // }
         margin-top: 8%;
         position: relative;
         @include size(100%, 200px);
@@ -84,12 +67,12 @@
         div.hov{
             position: absolute;
             top: 0;
-            background-color: rgba($color: $primary, $alpha: 1);
+            background-color: rgba($color: $primary, $alpha: 0.6);
             opacity: 0;
             display: block;
             z-index: 99;
             &:hover{
-                opacity: 0.8;
+                opacity: 1;
                 .buttons{
                     display: block;
                     top: 3%;

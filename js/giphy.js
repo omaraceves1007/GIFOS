@@ -4,6 +4,7 @@ const BASE_TRENDING = 'https://api.giphy.com/v1/';
 const RANDOM = `${ BASE_URL }random?api_key=${ KEY }`;
 const TRENDING = `${ BASE_TRENDING }trending/searches?api_key=${ KEY }`;
 const AUTOCOMPLETE = `${ BASE_URL }search/tags?api_key=${ KEY }`;
+const TREND_IMAGE = `${BASE_URL}trending?api_key=${ KEY }&limit=12&rating=g`;
 
 // api.giphy.com/v1/gifs/search/tags
 // api.giphy.com/v1/trending/searches
@@ -35,6 +36,11 @@ export function autocomplete( text ) {
     let url = `${AUTOCOMPLETE}&q=${text}`;
     return fetch( url ).then( e => e.json() )
         .then( respResult );
+}
+
+export function getTrendingImages() {
+    return fetch( TREND_IMAGE ).then( resp => resp.json() )
+            .then( respResult );
 }
 
 function respResult( response ) {

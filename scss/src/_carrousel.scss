@@ -1,7 +1,6 @@
 .carrousel{
-    @include size(100%, 200px);
-    margin: 8% 0;
-    padding: 0 8%;
+    @include size(90%, 200px);
+    margin: 8% auto;
     overflow-x: scroll;
     display: flex;
 }
@@ -28,7 +27,18 @@
 
 .gif-carrousel{
     @include size(243px, 187px);
-    padding-right: 8%;
+    margin-right: 8%;
+    position: relative;
+    img {
+        @include size(243px, 187px);
+    }
+    .car-hover {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($color: $primary, $alpha: 0.7);
+    }
 }
 
 /*dark mode styling*/
@@ -77,23 +87,58 @@
         margin-top: 3%;
         margin-bottom: 8%;
         @include size(80%, 276px);
-        padding: 0;
         scrollbar-width: none;
         &::-webkit-scrollbar{
             display: none;
         }
+        overflow-x: none;
     }
 
     .gif-carrousel{
-        &:first-child{
-            padding-left: 7%;    
-            @include size(357px !important, 275px !important);
+        margin-right: 6%;
+        @include size(357px , 275px );
+        img, .car-hover {
+            @include size(357px , 275px );
+        } 
+        .car-hover {
+            display: block;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            &:hover{
+                opacity: 1;
+            }
+            div.buttons-car {
+                text-align: end;
+                margin-right: 2%;
+                margin-top: 2%;
+                .button-t {
+                    cursor: pointer;
+                    background-color: $white;
+                    border-radius: 6px;
+                    opacity: 0.8;
+                    border: ridge 2px $primary;
+                    margin: 0 1%;
+                    &:hover{
+                        opacity: 1;
+                        box-shadow: 1px 1px 2px 2px rgba($color: $black-ligth, $alpha: 0.8);
+                    }
+                }
+            }
+            div.car-info {
+                position: absolute;
+                color: $white;
+                text-align: start;
+                bottom: 15%;
+                width: 100%;
+                opacity: 1;
+                p{
+                    text-align: left;
+                    padding-left: 7%;
+                }
+                z-index: 500;
+            }
         }
-        &:last-child{
-            padding-right: 7%;    
-        }
-        @include size(357px !important, 275px !important);
-        padding-right: 4%;
-        padding-left: 4%;
     }
 }

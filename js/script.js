@@ -6,6 +6,7 @@ import * as GIPHY from './giphy.js';
 import * as INSERTS from './inserts.js';
 import * as SEARCHS from './autocomplete.js';
 import * as FAVS from './favorites.js';
+import * as CAR from './carrousel.js';
 
 
 const MENU = BUTTONS.DOC.querySelector('ul.menu');
@@ -14,14 +15,19 @@ let is_dark = false;
 let search_arr = [];
 let fav_arr = [];
 let mis_arr = [];
+let carrousel = [];
 const WIN = window;
 
-// WIN.onload = () => {
+WIN.onload = () => {
 //     if ( STORAGE.existData( 'fav' ) ) {
 //         const favs = STORAGE.getData( 'fav' );
 //         fav_arr = JSON.parse(favs);
 //     }
-// }
+    GIPHY.getTrendingImages().then( gifs => {
+        carrousel = GIFOS.createArray( gifs );
+        CAR.initCarrousel( carrousel );
+    });
+}
 
 // limpiea de clases extras y estilos a elementos de menu
 WIN.onresize = () => {
@@ -78,12 +84,10 @@ BUTTONS.FAVORITES_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
     if ( STORAGE.existData( 'fav' ) ) {
         const favs = STORAGE.getData( 'fav' );
-        fav_arr = JSON.parse(favs);
-        if( fav_arr.length === 0 ) {
-            FAVS.emptySecction( 'fav', is_dark );
-        } else {
-            FAVS.insertfavs( fav_arr, 'fav', is_dark );
-        }
+        fav_arr = JSON.parse( favs );
+        FAVS.insertfavs( fav_arr, 'fav', is_dark );
+    } else {
+        FAVS.emptySecction( 'fav', is_dark );
     }
 });
 
@@ -94,13 +98,11 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
     BUTTONS.DOC.getElementById('mis-section').classList.remove('hide');
     if ( STORAGE.existData( 'mis' ) ) {
-        const favs = STORAGE.getData( 'mis' );
-        fav_arr = JSON.parse(favs);
-        if( fav_arr.length === 0 ) {
-            FAVS.emptySecction( 'mis', is_dark );
-        } else {
-            FAVS.insertfavs( fav_arr, 'mis', is_dark );
-        }
+        const mis = STORAGE.getData( 'mis' );
+        mis_arr = JSON.parse( mis );
+        FAVS.insertfavs( mis_arr, 'mis', is_dark );
+    } else {
+        FAVS.emptySecction( 'mis', is_dark );
     }
 });
 

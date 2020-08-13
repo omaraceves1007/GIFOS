@@ -112,10 +112,11 @@ ul#trending-list {
         background-color: $white;
         border-radius: 6px;
         opacity: 0.8;
-        border: none;
+        border: ridge 2px $primary;
         margin: 0 1%;
         &:hover{
             opacity: 1;
+            box-shadow: 1px 1px 2px 2px rgba($color: $black-ligth, $alpha: 0.8);
         }
     }
 }

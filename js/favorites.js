@@ -10,18 +10,21 @@ let misGifos = DOC.MIS;
 // create empty seccion favorites
 export function emptySecction( idIcon, dark ) {
     let section = idIcon === 'fav' ? favorites : misGifos;
-    section.innerHTML = '';
-    section.classList.remove( 'hide' );
+        section.innerHTML = '';
+        section.classList.remove( 'hide' );
+    let title_text = idIcon === 'fav' ? 'Favoritos' : 'Mis GIFOS';
+    let leyend = idIcon === 'fav' ? '"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"':
+                            '¡Anímate a crear tu primer GIFO!';
     let icon = INSERT.createEle( 'i', 'icon' );
         icon.classList.add( `icon-${idIcon}` )
     let title = INSERT.createEle( 'h3', 'title' );
-        title.innerHTML = `<strong>Favoritos</strong>`;
+        title.innerHTML = `<strong>${title_text}</strong>`;
         if( dark ){
             title.classList.add( 'text-white' );
         }
     let cont = INSERT.createEle( 'div' );
         cont.innerHTML = `<i class="icon-${idIcon}-empty"></i>
-                        <h4 class="title-empty"> "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!" </h4>`;
+                        <h4 class="title-empty"> ${leyend} </h4>`;
     section.append( icon, title, cont );
     if( dark ) {
         const TEXT = DOC.DOC.querySelectorAll('p, footer, h1, h2, h3, h4, li');
@@ -48,6 +51,7 @@ export function insertfavs ( list, idIcon, dark ) {
     let cardsInner = cards( list, dark );
         cardsInner.forEach( card => {
             container.appendChild( card );
+            card.onload = () => { console.log('se cargo todo') };
         });
     section.append( icon, title, container );
     if( list.length > end ) {

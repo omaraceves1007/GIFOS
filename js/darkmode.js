@@ -49,7 +49,7 @@ export function dark(){
     SEARCH.classList.add('buscar-d');
     SEARCH_IN.classList.add('dark-in');
     SEARCH_I.classList.add('icon-plus-d');
-    MORE.classList.add('button-b');
+    MORE?.classList.add('button-b');
     FOOTER.classList.add('dark');
     // MODAL.classList.add('dark-b');
 }
@@ -90,7 +90,7 @@ export function light(){
     SEARCH.classList.remove('buscar-d');
     SEARCH_IN.classList.remove('dark-in');
     SEARCH_I.classList.remove('icon-plus-d');
-    MORE.classList.remove('button-b');
+    MORE?.classList.remove('button-b');
     FOOTER.classList.remove('dark');
     // MODAL.classList.remove('dark-b');
 }

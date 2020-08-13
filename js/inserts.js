@@ -187,7 +187,7 @@ function getMore( text ) {
 }
 
 //add to favorite array
-function addFavorite( gif ) {
+export function addFavorite( gif ) {
     const FAV = STORAGE.existData( 'fav' );
     let fav_arr = [];
     let temp;
@@ -227,13 +227,13 @@ export function max( gif, gifs, dark, fav ) {
 export function download( gif ) {
     let index = gif.url.indexOf('?cid');
     const link = DOC.DOC.createElement( 'a' );
-    link.style.display = 'none';
-    link.href = gif.url.slice(0, index);
-    link.download = gif.name + ".gif";
-    link.target = '_blank';
+        link.style.display = 'none';
+        link.href = gif.url.slice(0, index);
+        link.download = gif.title + ".gif";
+        link.target = '_blank';
     DOC.DOC.body.appendChild(link);
-    link.click(); 
-    link.remove();
+        link.click(); 
+        link.remove();
 }
 
 function link( gif ) {

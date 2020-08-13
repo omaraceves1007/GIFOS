@@ -349,6 +349,9 @@ header {
 
 /* Desktop mode */
 @media (min-width: 550px) {
+  .logo {
+    left: 15%;
+  }
   .menu-nig {
     background-color: #37383c !important;
   }
@@ -882,12 +885,14 @@ ul#trending-list li:hover {
   background-color: #FFFFFF;
   border-radius: 6px;
   opacity: 0.8;
-  border: none;
+  border: ridge 2px #572EE5;
   margin: 0 1%;
 }
 
 .buttons .button-t:hover {
   opacity: 1;
+  -webkit-box-shadow: 1px 1px 2px 2px rgba(55, 56, 60, 0.8);
+          box-shadow: 1px 1px 2px 2px rgba(55, 56, 60, 0.8);
 }
 
 /*dark mode styling*/
@@ -1053,7 +1058,7 @@ input#buscar.dark-in {
   display: none;
   position: absolute;
   top: 0;
-  background-color: #572ee5;
+  background-color: rgba(87, 46, 229, 0.6);
   opacity: 0;
 }
 
@@ -1102,13 +1107,13 @@ input#buscar.dark-in {
   .fav-item div.hov {
     position: absolute;
     top: 0;
-    background-color: #572ee5;
+    background-color: rgba(87, 46, 229, 0.6);
     opacity: 0;
     display: block;
     z-index: 99;
   }
   .fav-item div.hov:hover {
-    opacity: 0.8;
+    opacity: 1;
   }
   .fav-item div.hov:hover .buttons {
     display: block;
@@ -1140,10 +1145,9 @@ input#buscar.dark-in {
 }
 
 .carrousel {
-  width: 100%;
+  width: 90%;
   height: 200px;
-  margin: 8% 0;
-  padding: 0 8%;
+  margin: 8% auto;
   overflow-x: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1176,7 +1180,21 @@ input#buscar.dark-in {
 .gif-carrousel {
   width: 243px;
   height: 187px;
-  padding-right: 8%;
+  margin-right: 8%;
+  position: relative;
+}
+
+.gif-carrousel img {
+  width: 243px;
+  height: 187px;
+}
+
+.gif-carrousel .car-hover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(87, 46, 229, 0.7);
 }
 
 /*dark mode styling*/
@@ -1225,25 +1243,61 @@ input#buscar.dark-in {
     margin-bottom: 8%;
     width: 80%;
     height: 276px;
-    padding: 0;
     scrollbar-width: none;
+    overflow-x: none;
   }
   .carrousel::-webkit-scrollbar {
     display: none;
   }
   .gif-carrousel {
-    width: 357px !important;
-    height: 275px !important;
-    padding-right: 4%;
-    padding-left: 4%;
+    margin-right: 6%;
+    width: 357px;
+    height: 275px;
   }
-  .gif-carrousel:first-child {
+  .gif-carrousel img, .gif-carrousel .car-hover {
+    width: 357px;
+    height: 275px;
+  }
+  .gif-carrousel .car-hover {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .gif-carrousel .car-hover:hover {
+    opacity: 1;
+  }
+  .gif-carrousel .car-hover div.buttons-car {
+    text-align: end;
+    margin-right: 2%;
+    margin-top: 2%;
+  }
+  .gif-carrousel .car-hover div.buttons-car .button-t {
+    cursor: pointer;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    opacity: 0.8;
+    border: ridge 2px #572EE5;
+    margin: 0 1%;
+  }
+  .gif-carrousel .car-hover div.buttons-car .button-t:hover {
+    opacity: 1;
+    -webkit-box-shadow: 1px 1px 2px 2px rgba(55, 56, 60, 0.8);
+            box-shadow: 1px 1px 2px 2px rgba(55, 56, 60, 0.8);
+  }
+  .gif-carrousel .car-hover div.car-info {
+    position: absolute;
+    color: #FFFFFF;
+    text-align: start;
+    bottom: 15%;
+    width: 100%;
+    opacity: 1;
+    z-index: 500;
+  }
+  .gif-carrousel .car-hover div.car-info p {
+    text-align: left;
     padding-left: 7%;
-    width: 357px !important;
-    height: 275px !important;
-  }
-  .gif-carrousel:last-child {
-    padding-right: 7%;
   }
 }
 
