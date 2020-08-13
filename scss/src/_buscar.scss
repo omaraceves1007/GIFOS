@@ -60,7 +60,7 @@ ul#trending-list {
         display: none;
         @extend %roboto-regular;
         font-size: 15px;
-        color: white;
+        color: $white;
         position: absolute;
         bottom: 60px;
         left: 10px;
@@ -69,7 +69,7 @@ ul#trending-list {
         display: none;
         @extend %roboto-bold;
         font-size: 16px;
-        color: white;
+        color: $white;
         position: absolute;
         bottom: 30px;
         left: 10px;

@@ -3,7 +3,7 @@ import * as INSERT from './inserts.js';
 
 let ITEMS;
 
-export function createModal( item, items, favAdd, download, dark ){
+export function createModal( item, items, favAdd, download, dark, fav ){
     ITEMS = items;
     let modal = INSERT.createEle( 'div', 'modal' );
     let close = INSERT.createEle( 'button', 'close-modal');
@@ -13,7 +13,7 @@ export function createModal( item, items, favAdd, download, dark ){
         close.onclick = () => { modal.remove() };
     let modal_cont = INSERT.createEle( 'div', 'cont-modal' );
     let body = createImage( item );
-    let foot = createFooter( item, favAdd, download, dark );
+    let foot = createFooter( item, favAdd, download, dark, fav );
     if( dark ) {
         modal.classList.add( 'dark-b');
         icon.style.background = '#ffffff';
@@ -52,15 +52,19 @@ const TEMP = `<div class="modal hide">
                 </div>
             </div>`;
 
-function createFooter( item, func1, func2, dark ) {
+function createFooter( item, func1, func2, dark, fav ) {
     let footer = INSERT.createEle( 'div', 'footer-modal' );
     let data = INSERT.createEle( 'div', 'data' );
         data.innerHTML = `<p>${ item.user }</p>
                         <p>${ item.title }</p>`;
     let actions = INSERT.createEle( 'div', 'actions');
     let but1 = INSERT.createEle( 'button', 'icon');
+    if( fav ){
+        but1.classList.add( 'icon-Afav' );
+    } else {
         but1.classList.add( 'icon-Hfav' );
         but1.onclick = () => { func1( item ) };
+    }
     let but2 = INSERT.createEle( 'button', 'icon');
         but2.classList.add( 'icon-download' );
         but2.onclick = () => { func2( item ) };

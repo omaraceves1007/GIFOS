@@ -5,6 +5,8 @@ import * as BUTTONS from './buttons.js';
 import * as GIPHY from './giphy.js';
 import * as INSERTS from './inserts.js';
 import * as SEARCHS from './autocomplete.js';
+import * as FAVS from './favorites.js';
+
 
 const MENU = BUTTONS.DOC.querySelector('ul.menu');
 let is_dark = false;
@@ -12,9 +14,17 @@ let is_dark = false;
 let search_arr = [];
 let fav_arr = [];
 let mis_arr = [];
+const WIN = window;
+
+// WIN.onload = () => {
+//     if ( STORAGE.existData( 'fav' ) ) {
+//         const favs = STORAGE.getData( 'fav' );
+//         fav_arr = JSON.parse(favs);
+//     }
+// }
 
 // limpiea de clases extras y estilos a elementos de menu
-window.onresize = () => {
+WIN.onresize = () => {
     if(screen.width > 550){
         BUTTONS.OPEN.removeAttribute('style');
         BUTTONS.CLOSE.removeAttribute('style');
@@ -34,9 +44,6 @@ BUTTONS.HOME.addEventListener('click',() =>{
 
 // botones de menu hamburguesa
 BUTTONS.OPEN.addEventListener('click', (event) => {
-    if(screen.width < 550){
-        console.log(screen.width);
-    }
     event.target.style.display = 'none';
     MENU.classList.remove('fadeOutUp');
     MENU.classList.add('fadeInDown');
@@ -69,6 +76,15 @@ BUTTONS.FAVORITES_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('result-section').classList.add('hide');
     BUTTONS.DOC.getElementById('fav-section').classList.remove('hide');
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
+    if ( STORAGE.existData( 'fav' ) ) {
+        const favs = STORAGE.getData( 'fav' );
+        fav_arr = JSON.parse(favs);
+        if( fav_arr.length === 0 ) {
+            FAVS.emptySecction( 'fav', is_dark );
+        } else {
+            FAVS.insertfavs( fav_arr, 'fav', is_dark );
+        }
+    }
 });
 
 // Show my gifos secction
@@ -77,6 +93,15 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('result-section').classList.add('hide');
     BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
     BUTTONS.DOC.getElementById('mis-section').classList.remove('hide');
+    if ( STORAGE.existData( 'mis' ) ) {
+        const favs = STORAGE.getData( 'mis' );
+        fav_arr = JSON.parse(favs);
+        if( fav_arr.length === 0 ) {
+            FAVS.emptySecction( 'mis', is_dark );
+        } else {
+            FAVS.insertfavs( fav_arr, 'mis', is_dark );
+        }
+    }
 });
 
 // Delete text search
@@ -101,8 +126,9 @@ BUTTONS.SEARCH.addEventListener( 'click', () => {
                     INSERTS.insertResults( text, search_arr, is_dark );
                     SEARCHS.cleanText();
                 } else {
-                    INSERTS.emptySecction( this.value, 1 );
+                    INSERTS.emptySecction( text, is_dark );
                 }
+                BUTTONS.INPUT_SEARCH.value = '';
             }
         } );
     } else {
@@ -121,7 +147,7 @@ BUTTONS.INPUT_SEARCH.addEventListener( 'keyup', function(e) {
                         SEARCHS.cleanText();
                         SEARCHS.deleteClass();
                     } else {
-                        INSERTS.emptySecction( this.value, 1 );
+                        INSERTS.emptySecction( this.value, is_dark );
                     }
                 }
             } );

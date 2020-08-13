@@ -5,7 +5,7 @@ import * as SEARCHS from './autocomplete.js';
 import * as STORAGE from './storage.js';
 import * as MODAL from './modal.js';
 
-const TYPES_B = {
+export const TYPES_B = {
     favh: 'icon-Hfav',
     fava: 'icon-Afav',
     trash: 'icon-trash',
@@ -136,7 +136,7 @@ export function seeMore( text ) {
 
 // Empty search 
 
-export function emptySecction( text, type ) {
+export function emptySecction( text, dark ) {
     DOC.RESULTS.innerHTML = '';
     DOC.RESULTS.classList.remove( 'hide' );
     let title = createEle( 'h3', 'title' );
@@ -145,6 +145,12 @@ export function emptySecction( text, type ) {
         cont.innerHTML = `<i class="icon-search-empty"></i>
                         <h4 class="title-empty"> Intenta con otra búsqueda </h4>`;
     DOC.RESULTS.append( title, cont );
+    if( dark ) {
+        const TEXT = DOC.DOC.querySelectorAll('p, footer, h1, h2, h3, h4, li');
+        TEXT.forEach(el => {
+            el.classList.add('text-white');
+        });
+    }
 }
 
 /******* butons actions ********/ 
@@ -154,10 +160,10 @@ function search( id, dark ) {
     GIPHY.search( id ).then( gifs => {
         if(gifs) {
             let search_arr = GIFOS.createArray( gifs );
-            STORAGE.save({
-                key: 'search',
-                data: search_arr.toString()
-            });
+            // STORAGE.save({
+            //     key: 'search',
+            //     data: search_arr.toString()
+            // });
             insertResults( id, search_arr, dark );
             SEARCHS.deleteClass();
         }
@@ -182,7 +188,21 @@ function getMore( text ) {
 
 //add to favorite array
 function addFavorite( gif ) {
-    console.log('favorite', gif)
+    const FAV = STORAGE.existData( 'fav' );
+    let fav_arr = [];
+    let temp;
+    if( FAV ) {
+        
+        fav_arr = JSON.parse( STORAGE.getData( 'fav' ) );
+        fav_arr.push( gif );
+    } else {
+        fav_arr.push( gif );
+    }
+    STORAGE.save( {
+        key: 'fav',
+        data: fav_arr
+    } );
+    alert( '¡Agregado a favoritos!' );
 }
 
 //Delete from fav array
@@ -191,16 +211,20 @@ function trash( gif ) {
 }
 
 // Max images
-function max( gif, gifs, dark ) {
+export function max( gif, gifs, dark, fav ) {
     const HEADER = DOC.DOC.querySelector('header');
     if( HEADER.classList[0] === 'dark' ) {
         dark = true;
     }
-    MODAL.createModal( gif, gifs, addFavorite, download, dark );
+    if( fav ) {
+        MODAL.createModal( gif, gifs, addFavorite, download, dark, fav );
+    } else{
+        MODAL.createModal( gif, gifs, addFavorite, download, dark );
+    }
 }
 
 // Download link page
-function download( gif ) {
+export function download( gif ) {
     let index = gif.url.indexOf('?cid');
     const link = DOC.DOC.createElement( 'a' );
     link.style.display = 'none';

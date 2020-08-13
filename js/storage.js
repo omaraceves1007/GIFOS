@@ -7,7 +7,7 @@ export function existData( key ) {
 }
 
 export function save( object ) {
-    storage.setItem( object.key, object.data );
+    storage.setItem( object.key, JSON.stringify(object.data) );
 }
 
 export function getData( key ) {

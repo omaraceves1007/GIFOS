@@ -13,4 +13,6 @@ export const INPUT_SEARCH = DOC.querySelector('#buscar');
 
 // SECTIONS
 export const RESULTS = DOC.getElementById('result-section');
+export const FAVS = DOC.getElementById('fav-section');
+export const MIS = DOC.getElementById('mis-section');
 

@@ -16,6 +16,31 @@
     img{
         @include size(100%, 120px);
     }
+    div.hov{
+        display: none;
+        position: absolute;
+        top: 0;
+        background-color: rgba($color: $primary, $alpha: 1);
+        opacity: 0;
+    }
+    p.user{
+        display: none;
+        @extend %roboto-regular;
+        font-size: 15px;
+        color: $white;
+        position: absolute;
+        bottom: 60px;
+        left: 10px;
+    }
+    p.title-gif{
+        display: none;
+        @extend %roboto-bold;
+        font-size: 16px;
+        color: $white;
+        position: absolute;
+        bottom: 30px;
+        left: 10px;
+    }
 }
 
 
@@ -35,19 +60,45 @@
     }
 
     .fav-item{
+        // margin-top: 8%;
+        // position: relative;
+        // @include size(100%, 200px);
+        // img, div{
+        //     @include size(100%, 200px);
+        // }
+        // div{
+        //     position: absolute;
+        //     top: 0;
+        //     background-color: rgba($color: $primary, $alpha: 1);
+        //     opacity: 0;
+        //     &:hover{
+        //         opacity: 0.7;
+        //     }
+        // }
         margin-top: 8%;
         position: relative;
         @include size(100%, 200px);
         img, div{
             @include size(100%, 200px);
         }
-        div{
+        div.hov{
             position: absolute;
             top: 0;
             background-color: rgba($color: $primary, $alpha: 1);
             opacity: 0;
+            display: block;
+            z-index: 99;
             &:hover{
-                opacity: 0.7;
+                opacity: 0.8;
+                .buttons{
+                    display: block;
+                    top: 3%;
+                    right: 3%;
+                }
+                ~ p{
+                    display: block;
+                    z-index: 100;
+                }
             }
         }
     }
