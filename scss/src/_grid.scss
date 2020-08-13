@@ -15,12 +15,11 @@ header{
 }
 
 .grid-container{
-    grid-template: /* 40% auto 40% */ auto / 100%;
+    grid-template: auto / 100%;
 }
 
 .grid-busqueda {
     grid-template: auto / repeat(2, 47%);
-    // grid-template-columns: repeat(2, 47%);
     grid-column-gap: 6%;
 }
 

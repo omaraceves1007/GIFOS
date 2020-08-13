@@ -55,6 +55,7 @@ BUTTONS.OPEN.addEventListener('click', (event) => {
     MENU.classList.add('fadeInDown');
     MENU.style.display = 'block';
     BUTTONS.CLOSE.style.display = 'block';
+    BUTTONS.DOC.body.style.overflow = 'hidden';
 });
 
 BUTTONS.CLOSE.addEventListener('click', (event) => {
@@ -63,6 +64,7 @@ BUTTONS.CLOSE.addEventListener('click', (event) => {
     MENU.classList.add('fadeOutUp');
     setTimeout(() => MENU.style.display = 'none',1000);
     BUTTONS.OPEN.style.display = 'block';
+    BUTTONS.DOC.body.style.overflow = '';
 });
 
 // botones de secciones de menu

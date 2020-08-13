@@ -271,6 +271,7 @@ header {
   position: absolute;
   left: 5%;
   top: 2%;
+  z-index: 2;
 }
 
 .menu-logo {
@@ -297,6 +298,7 @@ header {
   text-align: center;
   background-color: rgba(87, 46, 229, 0.9);
   height: 100vh;
+  z-index: 1 !important;
 }
 
 .menu li {
@@ -330,7 +332,7 @@ header {
 
 /*dark mode styling*/
 .menu-nig {
-  background-color: black !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 .plus-dark {
