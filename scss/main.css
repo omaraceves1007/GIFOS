@@ -58,11 +58,11 @@ table {
   height: auto;
 }
 
-.search-section, .search-result-section, .fav-section {
+.search-section, .search-result-section, .fav-section, .record-container {
   margin: 0 5%;
 }
 
-.title, .title-empty, .options p, .carrousel-section p, .ilustra, .result-row, .fav-items {
+.title, .title-empty, .options p, .carrousel-section p, .ilustra, .result-row, .fav-items, .record-container > div .frame p {
   margin: 0 auto;
 }
 
@@ -80,7 +80,7 @@ table {
   font-family: 'Montserrat', sans-serif;
 }
 
-.result-item p.user, .fav-item p.user {
+.result-item p.user, .fav-item p.user, .record-container > div .frame p {
   font-family: "Roboto-Regular", sans-serif;
 }
 
@@ -352,7 +352,7 @@ header {
 /* Desktop mode */
 @media (min-width: 550px) {
   .logo {
-    left: 15%;
+    left: 13%;
   }
   .menu-nig {
     background-color: #37383c !important;
@@ -1330,6 +1330,7 @@ footer p {
 /*dark mode styling*/
 footer.dark {
   border-bottom: #000000 3px solid;
+  border-top: none !important;
 }
 
 /* Desktop mode */
@@ -1338,7 +1339,7 @@ footer.dark {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 2% 3%;
+    padding: 2% 10%;
   }
   footer h4 {
     padding-top: 0;
@@ -1487,4 +1488,212 @@ footer.dark {
     opacity: 1;
   }
 }
+
+.record-container {
+  grid-row: auto;
+  scrollbar-width: none;
+  background-color: white;
+}
+
+.record-container > div {
+  position: relative;
+  margin-left: 9%;
+  margin-right: 9%;
+  height: 79.3vh;
+}
+
+.record-container > div .camera {
+  position: absolute;
+  top: 23%;
+  left: 1%;
+}
+
+.record-container > div .ligth {
+  position: absolute;
+  top: 26.5%;
+  left: 11.85%;
+}
+
+.record-container > div .cint {
+  position: absolute;
+  right: 2%;
+  bottom: 19%;
+}
+
+.record-container > div .frame {
+  width: 688px;
+  height: 390px;
+  position: absolute;
+  top: 5%;
+  left: 19%;
+  border: solid 1px #572EE5;
+}
+
+.record-container > div .frame:before {
+  content: "";
+  width: 646px;
+  height: 348px;
+  position: absolute;
+  top: 21px;
+  left: 21px;
+  z-index: 2;
+  background-color: #FFFFFF;
+}
+
+.record-container > div .frame:after {
+  content: "";
+  width: 648px;
+  height: 350px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  background-image: linear-gradient(90deg, transparent 20px, #FFFFFF 20px, #FFFFFF 628px, transparent 628px), linear-gradient(#50E3C2 20px, transparent 20px, transparent 330px, #50E3C2 330px);
+}
+
+.record-container > div .frame .title {
+  position: relative;
+  z-index: 3;
+  width: 60%;
+  font-size: 25px;
+  line-height: 35px;
+  padding-top: 0;
+  margin-top: 17%;
+}
+
+.record-container > div .frame p {
+  position: relative;
+  z-index: 3;
+  width: 60%;
+  text-align: center;
+  font-size: 16px;
+  line-height: 29px;
+  margin-top: 1%;
+}
+
+.record-container > div .frame #video {
+  position: absolute;
+  width: 480px;
+  height: 320px;
+  background-color: royalblue;
+  z-index: 4;
+  top: 35px;
+  left: 104px;
+}
+
+.record-container > div .steps {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  z-index: 3;
+  margin-top: 37%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.record-container > div .steps button {
+  cursor: pointer;
+  border: solid 1px #572EE5;
+  border-radius: 50%;
+  padding: 3px 8px;
+  margin: 0 2%;
+  background-color: transparent;
+  color: #572EE5;
+}
+
+.record-container > div .steps .active-round {
+  background-color: #572EE5;
+  color: #FFFFFF;
+}
+
+.record-container > div .steps p::before {
+  position: absolute;
+  right: 21%;
+  top: 35%;
+  content: attr(data);
+}
+
+.record-container > div .bar {
+  position: absolute;
+  width: 70%;
+  height: 5px;
+  background-color: #572ee5;
+  border-radius: 50px;
+  margin-top: 41.5%;
+  left: 15%;
+}
+
+.record-container > div .button-end {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  text-align: center;
+  bottom: 9%;
+}
+
+.record-container > div .button-end button {
+  cursor: pointer;
+  padding: 1% 1%;
+  border-radius: 50px;
+  border: solid 1px #572ee5;
+  background-color: transparent;
+  color: #572ee5;
+}
+
+.record-container > div .button-end button:hover {
+  background-color: #572EE5;
+  color: white;
+}
+
+/* DARK MODE */
+.frame-d {
+  border: solid 1px white !important;
+}
+
+.frame-d:before {
+  background-color: #37383C !important;
+}
+
+.frame-d:after {
+  background-image: linear-gradient(90deg, transparent 20px, #37383C 20px, #37383C 628px, transparent 628px), linear-gradient(#50E3C2 20px, transparent 20px, transparent 330px, #50E3C2 330px) !important;
+}
+
+.frame-d .title, .frame-d p {
+  color: white;
+}
+
+.bar-d {
+  background-color: white !important;
+}
+
+.circle-d {
+  background-color: #37383C !important;
+  color: white !important;
+  border: solid 1px white !important;
+}
+
+.active-round-d {
+  background-color: white !important;
+  color: #572ee5 !important;
+  border: solid 1px #572ee5 !important;
+}
+
+button.button-d {
+  border: solid 1px white !important;
+  color: white !important;
+}
+
+/* 
+    agregar a record-section dark-b class
+    cambiar imagenes por dark version menos luz
+    agregar clases a secciones
+
+*/
 /*# sourceMappingURL=main.css.map */

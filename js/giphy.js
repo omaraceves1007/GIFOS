@@ -5,6 +5,8 @@ const RANDOM = `${ BASE_URL }random?api_key=${ KEY }`;
 const TRENDING = `${ BASE_TRENDING }trending/searches?api_key=${ KEY }`;
 const AUTOCOMPLETE = `${ BASE_URL }search/tags?api_key=${ KEY }`;
 const TREND_IMAGE = `${BASE_URL}trending?api_key=${ KEY }&limit=12&rating=g`;
+const UPLOAD = `https://upload.giphy.com/v1/gifs?api_key=${ KEY }`;
+
 
 // api.giphy.com/v1/gifs/search/tags
 // api.giphy.com/v1/trending/searches
@@ -41,6 +43,10 @@ export function autocomplete( text ) {
 export function getTrendingImages() {
     return fetch( TREND_IMAGE ).then( resp => resp.json() )
             .then( respResult );
+}
+
+export function upload( data ) {
+    return fetch( UPLOAD, data ).then( console.log ).catch( console.log );
 }
 
 function respResult( response ) {

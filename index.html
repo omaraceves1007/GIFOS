@@ -33,7 +33,7 @@
         </nav>
     </header>
     <main class="grid grid-container">
-        <section id="search-section" class="search-section ">
+        <section id="search-section" class="search-section hide">
             <h2 class="title"> Inspírate, busca, guarda y crea los mejores <span>GIFOS</span> </h2>
             <img class="ilustra" src="img/ilustra_header.svg" alt="Ilustración principal">
             <div class="buscar grid">
@@ -253,7 +253,29 @@
                 <button>VER MÁS</button>
             </div> -->
         </section>
-        <section class="carrousel-section">
+        <section id="record-section" class="record-container">
+            <div>
+                <img class="camera" src="img/camara.svg" alt="camara">
+                <img class="ligth" src="img/element-luz-camara.svg" alt="luz de camara">
+                <img class="cint" src="img/pelicula.svg" alt="pelicula">
+                <div class="frame">
+                    <h3 class="title"> Aquí podrás <br> crear tus propios <span>GIFOS</span> </h3>
+                    <p>¡Crea tu GIFO en sólo 3 pasos!<br>
+                        (sólo necesitas una cámara para grabar un vidéo)
+                    </p>
+                    <div id="video hide"></div>
+                </div>
+                <div class="steps">
+                    <button class="active-round">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <p data="Finalizo" class="hide"></p>
+                </div>
+                <div class="bar bar-d"></div>
+                <div class="button-end"><button>COMENZAR</button></div>
+            </div>
+        </section>
+        <section class="carrousel-section hide">
             <h3 class="title"><strong>Trending GIFOS</strong></h3>
             <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             <div class="container-car ">

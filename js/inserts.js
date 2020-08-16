@@ -225,19 +225,25 @@ export function max( gif, gifs, dark, fav ) {
 
 // Download link page
 export function download( gif ) {
-    let index = gif.url.indexOf('?cid');
     const link = DOC.DOC.createElement( 'a' );
+    getImage( gif.url ).then( blob => {
+        const url = URL.createObjectURL( blob );
         link.style.display = 'none';
-        link.href = gif.url.slice(0, index);
+        link.href = url;
         link.download = gif.title + ".gif";
         link.target = '_blank';
     DOC.DOC.body.appendChild(link);
         link.click(); 
         link.remove();
+    } );
 }
 
 function link( gif ) {
     console.log('link', gif)
+}
+
+function getImage( url ) {
+    return fetch( url ).then( res => res.blob() );
 }
 
 const tempButtons = `<div class="buttons">

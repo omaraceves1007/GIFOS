@@ -23,6 +23,7 @@ footer{
 
 footer.dark{
     border-bottom: $black 3px solid;
+    border-top: none !important;
 }
 
 /* Desktop mode */
@@ -30,7 +31,7 @@ footer.dark{
 @media (min-width:550px){
     footer{
         display: flex;
-        padding: 2% 3%;
+        padding: 2% 10%;
         h4{
             padding-top: 0;
             width: 15%;
