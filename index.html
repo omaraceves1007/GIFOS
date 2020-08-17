@@ -33,7 +33,7 @@
         </nav>
     </header>
     <main class="grid grid-container">
-        <section id="search-section" class="search-section hide">
+        <section id="search-section" class="search-section ">
             <h2 class="title"> Inspírate, busca, guarda y crea los mejores <span>GIFOS</span> </h2>
             <img class="ilustra" src="img/ilustra_header.svg" alt="Ilustración principal">
             <div class="buscar grid">
@@ -253,7 +253,7 @@
                 <button>VER MÁS</button>
             </div> -->
         </section>
-        <section id="record-section" class="record-container">
+        <section id="record-section" class="record-container hide">
             <div>
                 <img class="camera" src="img/camara.svg" alt="camara">
                 <img class="ligth" src="img/element-luz-camara.svg" alt="luz de camara">
@@ -263,19 +263,31 @@
                     <p>¡Crea tu GIFO en sólo 3 pasos!<br>
                         (sólo necesitas una cámara para grabar un vidéo)
                     </p>
-                    <div id="video hide"></div>
+                    <div id="video" class="">
+                        <video></video>
+                        <!-- <div class="onload hide">
+                            <i class="icon icon-load"></i>
+                        </div>
+                        <div class="load">
+                            <i class="icon icon-check"></i>
+                            <div class="load-buttons">
+                                <button><i class="icon icon-download"></i></button>
+                                <button><i class="icon icon-link"></i></button>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
                 <div class="steps">
-                    <button class="active-round">1</button>
-                    <button>2</button>
-                    <button>3</button>
+                    <button id="1" >1</button>
+                    <button id="2" >2</button>
+                    <button id="3" >3</button>
                     <p data="Finalizo" class="hide"></p>
                 </div>
-                <div class="bar bar-d"></div>
+                <div class="bar"></div>
                 <div class="button-end"><button>COMENZAR</button></div>
             </div>
         </section>
-        <section class="carrousel-section hide">
+        <section id="carrousel-section" class="carrousel-section">
             <h3 class="title"><strong>Trending GIFOS</strong></h3>
             <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             <div class="container-car ">
@@ -350,6 +362,7 @@
         </div>
         <p>© GIFOS 2020 All Rights Reserved</p>
     </footer>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="js/script.js" type="module"></script>
 </body>
 

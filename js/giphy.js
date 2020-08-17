@@ -46,7 +46,12 @@ export function getTrendingImages() {
 }
 
 export function upload( data ) {
-    return fetch( UPLOAD, data ).then( console.log ).catch( console.log );
+    return fetch( UPLOAD, data ).then( res => res.json())
+    .then( json => {
+        if( json.meta.status === 200 ){
+            return new Promise( res => res( json.data ) );
+        }
+    } ).catch( console.log );
 }
 
 function respResult( response ) {

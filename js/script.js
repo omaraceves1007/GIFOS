@@ -7,6 +7,7 @@ import * as INSERTS from './inserts.js';
 import * as SEARCHS from './autocomplete.js';
 import * as FAVS from './favorites.js';
 import * as CAR from './carrousel.js';
+import * as RECORD from './record.js';
 
 
 const MENU = BUTTONS.DOC.querySelector('ul.menu');
@@ -17,12 +18,10 @@ let fav_arr = [];
 let mis_arr = [];
 let carrousel = [];
 const WIN = window;
+let record_step;
 
 WIN.onload = () => {
-//     if ( STORAGE.existData( 'fav' ) ) {
-//         const favs = STORAGE.getData( 'fav' );
-//         fav_arr = JSON.parse(favs);
-//     }
+    record_step = 0;
     GIPHY.getTrendingImages().then( gifs => {
         carrousel = GIFOS.createArray( gifs );
         CAR.initCarrousel( carrousel );
@@ -46,6 +45,8 @@ BUTTONS.HOME.addEventListener('click',() =>{
     BUTTONS.DOC.getElementById('result-section').classList.add('hide');
     BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('carrousel-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('record-section').classList.add('hide');
 })
 
 // botones de menu hamburguesa
@@ -84,6 +85,8 @@ BUTTONS.FAVORITES_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('result-section').classList.add('hide');
     BUTTONS.DOC.getElementById('fav-section').classList.remove('hide');
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('carrousel-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('record-section').classList.add('hide');
     if ( STORAGE.existData( 'fav' ) ) {
         const favs = STORAGE.getData( 'fav' );
         fav_arr = JSON.parse( favs );
@@ -99,12 +102,51 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('result-section').classList.add('hide');
     BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
     BUTTONS.DOC.getElementById('mis-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('carrousel-section').classList.remove('hide');
+    BUTTONS.DOC.getElementById('record-section').classList.add('hide');
     if ( STORAGE.existData( 'mis' ) ) {
         const mis = STORAGE.getData( 'mis' );
         mis_arr = JSON.parse( mis );
         FAVS.insertfavs( mis_arr, 'mis', is_dark );
     } else {
         FAVS.emptySecction( 'mis', is_dark );
+    }
+});
+
+// Sow new secction 
+BUTTONS.PLUS_B.addEventListener( 'click', () => {
+    BUTTONS.DOC.getElementById('search-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('result-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('fav-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('carrousel-section').classList.add('hide');
+    BUTTONS.DOC.getElementById('record-section').classList.remove('hide');
+} );
+
+// start event create gifos
+BUTTONS.START_B.addEventListener('click', function() {
+    switch( record_step ) {
+        case 0:// star camera stream
+            record_step = RECORD.start();
+            BUTTONS.UNO.classList.add( 'active-round' );
+            this.classList.add('hide');
+            RECORD.getMedia();
+            break;
+        case 1:// stard record
+            record_step = RECORD.startRecord();
+            console.warn(record_step,' al dar click en grabar')
+            break;
+        case 2:// stop record
+            RECORD.endRecord();
+            record_step = 3;
+            break;
+        case 3: // save gifo
+            console.log(record_step);
+            BUTTONS.DOS.classList.remove( 'active-round' );
+            BUTTONS.TRES.classList.add( 'active-round' );
+            RECORD.saveBlob();
+            record_step = 0;
+            break;
     }
 });
 

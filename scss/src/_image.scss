@@ -185,6 +185,20 @@
     margin: 2px;
 }
 
+.icon-load{
+    mask: url('../img/loader.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $secondary;
+}
+
+.icon-check{
+    mask: url('../img/check.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $secondary;
+}
+
 /* dark mode */
 
 .icon-plus-d{

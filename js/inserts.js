@@ -190,14 +190,10 @@ function getMore( text ) {
 export function addFavorite( gif ) {
     const FAV = STORAGE.existData( 'fav' );
     let fav_arr = [];
-    let temp;
     if( FAV ) {
-        
         fav_arr = JSON.parse( STORAGE.getData( 'fav' ) );
-        fav_arr.push( gif );
-    } else {
-        fav_arr.push( gif );
     }
+    fav_arr.push( gif );
     STORAGE.save( {
         key: 'fav',
         data: fav_arr
