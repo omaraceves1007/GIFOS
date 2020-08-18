@@ -2,6 +2,7 @@ import * as DOC from './buttons.js';
 import * as INSERT from './inserts.js';
 import * as GIPHY from './giphy.js';
 import * as STORAGE from './storage.js';
+import * as GIFS from './gifs.js';
 
 const MEDIA = window.navigator;
 let STREAM;
@@ -66,16 +67,24 @@ export function saveBlob() {
     DOC.TIME.classList.remove( 'again' )
     DOC.TIME.classList.add( 'hide' );
     DOC.START_B.classList.add( 'hide' );
-    console.log(BLOB, 'to save')
     let gif = createForm( BLOB );
     uploading();
+    // GIPHY.getById( resp.data.id ).then( data => {
+    //     setTimeout(()=>{
+    //         saveMis( data );
+    //         uploaded( data );
+    //     },3000);
+    // } );
     saveMis( resp.data );
     setTimeout(()=>{
         uploaded();
     },3000);
-    // GIPHY.upload( gif ).then( id => {
-    //     saveMis( id );
-    // } );
+    GIPHY.upload( gif ).then( info => {
+        GIPHY.getById( info.id ).then( data => {
+            saveMis( data );
+            uploaded( data );
+        } );
+    } );
 }
 
 function newStream( stream ) {
@@ -126,10 +135,9 @@ function createForm( blob ) {
 }
 
 function saveMis( item ) {
-    console.log(item)
     let mis_storage = [];
     let gif = {
-        id : item.id,
+        gif: new GIFS.GIFOS( item.id, item.title, item.images.downsized_large.url, item.username ),
         exist : true
     };
     if( STORAGE.existData( 'mis' ) ) {
@@ -149,76 +157,59 @@ function uploading(){
     video.appendChild( container );
 }
 
-function uploaded() {
+function uploaded( gif ) {
     let video = DOC.DOC.getElementById( 'video' );
     let container = INSERT.createEle( 'div', 'load' );
         container.innerHTML = `<i class="icon icon-check"></i>`;
     let cont_buttons = INSERT.createEle( 'div', 'load-buttons' );
-    let buttons = [ createButton( 'download', directDownload ),
-                    createButton( 'link', getlink ) ];
+    let buttons = [ createButton( 'download', directDownload, gif ),
+                    createButton( 'link', getlink, gif ) ];
         buttons.forEach( button => cont_buttons.appendChild( button) );
     container.appendChild( cont_buttons );
     DOC.DOC.querySelector( 'div.onload' ).classList.add( 'hide' );
     video.append( container );
 }
 
-function createButton( type, func ) {
+function createButton( type, func, gif ) {
     let button = INSERT.createEle( 'button' );
         button.innerHTML = `<i class="icon icon-${type}"></i>`
-        button.onclick = () => { func() };
+        button.onclick = () => { func( gif ) };
     return button;
 }
 
-function getlink() {
-    console.log('getLink');
+function getlink( gif ) {
+    let link = gif.images.downsized_large.url;
+    let text = INSERT.createEle( 'input' );
+    DOC.DOC.body.appendChild(text);
+        text.value = link;
+        text.select();
+        text.setSelectionRange(0, 99999);
+    DOC.DOC.execCommand( 'copy' );
+    alert( `Dirección copiada correctamente.` );
+    text.remove();
 }
 
-function directDownload() {
+function directDownload( gif ) {
     console.log('direct dounload');
+    const link = DOC.DOC.createElement( 'a', 'hide' );
+    INSERT.getImage( gif.images.downsized_large.url ).then( blob => {
+        const url = URL.createObjectURL( blob );
+        link.href = url;
+        link.download = gif.title + ".gif";
+        link.target = '_blank';
+    DOC.DOC.body.appendChild(link);
+        link.click(); 
+        link.remove();
+    } );
 }
-// <div class="onload hide">
-//     <i class="icon icon-load"></i>
-// </div>
-// <div class="load">
-//     <i class="icon icon-check"></i>
-//     <div class="load-buttons">
-//         <button><i class="icon icon-download"></i></button>
-//         <button><i class="icon icon-link"></i></button>
-//     </div>
-// </div>
-
-
 
 // response format
 const resp = {
     "data": {
-        "id": "f9XgYLDBg1HCDAldN7"
+        "id": "YiIGgI3QblMwU"
     },
     "meta": {
         "msg": "OK",
         "status": 200
     }
 }
-
-
-
-// CODIGO para descarga directa
-
-// let urlImage = "https://media1.giphy.com/media/dwLKHNAH13CkA8yYQO/giphy.gif?cid=53af4d4931cb7d5758f1592b56ae5b5ca5cc302be6556c20&rid=giphy.gif";
-// ​
-// async function getImage(urlImage) {
-//     let response = await fetch(urlImage);
-//     let gifBlob = await response.blob();
-//     console.info(gifBlob);
-//     return gifBlob;
-// }
-// ​
-// getImage(urlImage).then(blob => {
-//     const url = URL.createObjectURL(blob);
-//     let a = document.createElement('a');
-//     a.href = url;
-//     a.download = 'myGiphy.gif';
-//     a.title = 'Descargar';
-//     a.textContent = 'Descargar';
-//     document.body.appendChild(a); 
-// }).catch(console.error);

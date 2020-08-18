@@ -1638,6 +1638,7 @@ footer.dark {
   height: 320px;
   text-align: end;
   padding: 2%;
+  background-color: transparent;
 }
 
 .record-container > div .frame #video div.load .load-buttons button {

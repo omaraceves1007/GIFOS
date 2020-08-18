@@ -111,6 +111,11 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     } else {
         FAVS.emptySecction( 'mis', is_dark );
     }
+    // let ids = 'M33UV4NDvkTHa,f9XgYLDBg1HCDAldN7,UTSDWUuKQvZo6BT6U3,tGbhyv8Wmi4EM,50i6YRZxEiqkM,cwHQOWenYfnQA,YiIGgI3QblMwU,JOXHRcd3Llz5m,WUeeGwT8d8KFa,84GNxlATOZVSM,RLDGwhf7JmPX8oamhq,UMTB7bS0JpET6J3TguZh2TQJJm'
+    // GIPHY.getByIds( ids ).then( mis_gifos => {
+    //     if( mis_gifos )
+    //     mis_arr =
+    // } );
 });
 
 // Sow new secction 

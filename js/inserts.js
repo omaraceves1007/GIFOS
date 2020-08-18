@@ -238,7 +238,7 @@ function link( gif ) {
     console.log('link', gif)
 }
 
-function getImage( url ) {
+export function getImage( url ) {
     return fetch( url ).then( res => res.blob() );
 }
 

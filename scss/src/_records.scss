@@ -117,6 +117,7 @@
                             @include size(480px, 320px);
                             text-align: end;
                             padding: 2%;
+                            background-color: transparent;
                             button{
                                 cursor: pointer;
                                 background-color: rgba($color: $white, $alpha: 1);

@@ -1,12 +1,13 @@
 const KEY = 'ZGixrwRe4p2KRC7dadqj5o1gKO1ks93a'; // 'RVMI7UVuYe5FIgQ8wXDahFt62ndYR0k5';
-const BASE_URL = 'https://api.giphy.com/v1/gifs/';
+const BASE_URL = 'https://api.giphy.com/v1/gifs';
 const BASE_TRENDING = 'https://api.giphy.com/v1/';
-const RANDOM = `${ BASE_URL }random?api_key=${ KEY }`;
+const RANDOM = `${ BASE_URL }/random?api_key=${ KEY }`;
 const TRENDING = `${ BASE_TRENDING }trending/searches?api_key=${ KEY }`;
-const AUTOCOMPLETE = `${ BASE_URL }search/tags?api_key=${ KEY }`;
-const TREND_IMAGE = `${BASE_URL}trending?api_key=${ KEY }&limit=12&rating=g`;
+const AUTOCOMPLETE = `${ BASE_URL }/search/tags?api_key=${ KEY }`;
+const TREND_IMAGE = `${BASE_URL}/trending?api_key=${ KEY }&limit=12&rating=g`;
 const UPLOAD = `https://upload.giphy.com/v1/gifs?api_key=${ KEY }`;
-
+let ids = 'M33UV4NDvkTHa,f9XgYLDBg1HCDAldN7';
+const GIFS = `${BASE_URL}?api_key=${KEY}&ids=`;
 
 // api.giphy.com/v1/gifs/search/tags
 // api.giphy.com/v1/trending/searches
@@ -42,17 +43,30 @@ export function autocomplete( text ) {
 
 export function getTrendingImages() {
     return fetch( TREND_IMAGE ).then( resp => resp.json() )
-            .then( respResult );
+            .then( respResult )
+            .catch( console.log );
 }
 
 export function upload( data ) {
     return fetch( UPLOAD, data ).then( res => res.json())
-    .then( json => {
-        if( json.meta.status === 200 ){
-            return new Promise( res => res( json.data ) );
-        }
-    } ).catch( console.log );
+    .then( respResult )
+    .catch( console.log );
 }
+
+export function getByIds( ids ) {
+    return fetch( GIFS + ids ).then( res => res.json() )
+        .then( respResult )
+        .catch( console.log );
+}
+
+export function getById ( id ) {
+    let url = `${ BASE_URL }/${ id }?api_key=${ KEY }`;
+    return fetch( url ).then( res => res.json() )
+        .then( respResult )
+        .catch( console.log );
+}
+
+// getByIds( ids );
 
 function respResult( response ) {
     if( response.meta ) {
