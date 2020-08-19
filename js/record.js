@@ -77,19 +77,19 @@ export function saveBlob() {
     DOC.START_B.classList.add( 'hide' );
     let gif = createForm( BLOB );
     uploading();
-    GIPHY.getById( resp.data.id ).then( data => {
-        setTimeout(()=>{
-            // saveMis( data );
-            console.log('save', data)
-            uploaded( data );
-        },1000);
-    } );
-    // GIPHY.upload( gif ).then( info => {
-    //     GIPHY.getById( info.id ).then( data => {
-    //         saveMis( data );
+    // GIPHY.getById( resp.data.id ).then( data => {
+    //     setTimeout(()=>{
+    //         // saveMis( data );
+    //         console.log('save', data)
     //         uploaded( data );
-    //     } );
+    //     },1000);
     // } );
+    GIPHY.upload( gif ).then( info => {
+        GIPHY.getById( info.id ).then( data => {
+            saveMis( data );
+            uploaded( data );
+        } );
+    } );
 }
 
 export function reset(){
