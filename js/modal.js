@@ -6,11 +6,15 @@ let ITEMS;
 export function createModal( item, items, favAdd, download, dark, fav ){
     ITEMS = items;
     let modal = INSERT.createEle( 'div', 'modal' );
+        modal.classList.add( 'fadeIn' );
     let close = INSERT.createEle( 'button', 'close-modal');
     let icon = INSERT.createEle( 'i', 'icon');
         icon.classList.add( 'icon-close' );
         close.appendChild( icon );
-        close.onclick = () => { modal.remove() };
+        close.onclick = () => { 
+            modal.classList.add( 'fadeOut' );
+            setTimeout( () => { modal.remove() }, 500); 
+         };
     let modal_cont = INSERT.createEle( 'div', 'cont-modal' );
     let body = createImage( item );
     let foot = createFooter( item, favAdd, download, dark, fav );
@@ -31,26 +35,6 @@ function createImage ( item ) {
         container.appendChild( img );
     return container;
 }
-
-
-const TEMP = `<div class="modal hide">
-                <button class="close-modal"><i class="icon icon-close"></i></button>
-                <div class="cont-modal">
-                    <div class="body-modal">
-                        <img src="https://media.giphy.com/media/fnlXXGImVWB0RYWWQj/giphy.gif" alt="clavado perruno">
-                    </div>
-                    <div class="footer-modal">
-                        <div class="data">
-                            <p>USER</p>
-                            <p>TITLE GIF</p>
-                        </div>
-                        <div class="actions">
-                            <button><i class="icon icon-Hfav"></i></button>
-                            <button><i class="icon icon-download"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
 
 function createFooter( item, func1, func2, dark, fav ) {
     let footer = INSERT.createEle( 'div', 'footer-modal' );

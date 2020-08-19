@@ -50,6 +50,9 @@ BUTTONS.HOME.addEventListener('click',() =>{
     if( record_step !== 0 ) {
         RECORD.reset();
     }
+    if (BUTTONS.FAVORITES_B.classList.contains('active')) { BUTTONS.FAVORITES_B.classList.remove( 'active' ) };
+    if (BUTTONS.MY_GIFOS_B.classList.contains('active')) { BUTTONS.MY_GIFOS_B.classList.remove( 'active' ) };
+    if (BUTTONS.PLUS_B.classList.contains('active')) { BUTTONS.PLUS_B.classList.remove( 'active' ) };
 })
 
 // botones de menu hamburguesa
@@ -90,6 +93,9 @@ BUTTONS.FAVORITES_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
     BUTTONS.DOC.getElementById('carrousel-section').classList.remove('hide');
     BUTTONS.DOC.getElementById('record-section').classList.add('hide');
+    BUTTONS.FAVORITES_B.classList.add('active');
+    if (BUTTONS.MY_GIFOS_B.classList.contains('active')) { BUTTONS.MY_GIFOS_B.classList.remove( 'active' ) };
+    if (BUTTONS.PLUS_B.classList.contains('active')) { BUTTONS.PLUS_B.classList.remove( 'active' ) };
     if ( STORAGE.existData( 'fav' ) ) {
         const favs = STORAGE.getData( 'fav' );
         fav_arr = JSON.parse( favs );
@@ -110,6 +116,9 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('mis-section').classList.remove('hide');
     BUTTONS.DOC.getElementById('carrousel-section').classList.remove('hide');
     BUTTONS.DOC.getElementById('record-section').classList.add('hide');
+    BUTTONS.MY_GIFOS_B.classList.add('active');
+    if (BUTTONS.FAVORITES_B.classList.contains('active')) { BUTTONS.FAVORITES_B.classList.remove( 'active' ) };
+    if (BUTTONS.PLUS_B.classList.contains('active')) { BUTTONS.PLUS_B.classList.remove( 'active' ) };
     if ( STORAGE.existData( 'mis' ) ) {
         const mis = STORAGE.getData( 'mis' );
         mis_arr = GIFOS.arrayFromMis( JSON.parse( mis ) );
@@ -131,6 +140,9 @@ BUTTONS.PLUS_B.addEventListener( 'click', () => {
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
     BUTTONS.DOC.getElementById('carrousel-section').classList.add('hide');
     BUTTONS.DOC.getElementById('record-section').classList.remove('hide');
+    if (BUTTONS.MY_GIFOS_B.classList.contains('active')) { BUTTONS.MY_GIFOS_B.classList.remove( 'active' ) };
+    if (BUTTONS.FAVORITES_B.classList.contains('active')) { BUTTONS.FAVORITES_B.classList.remove( 'active' ) };
+    BUTTONS.PLUS_B.classList.add( 'active' );
 } );
 
 // start event create gifos
@@ -139,6 +151,9 @@ BUTTONS.START_B.addEventListener('click', function() {
         case 0:// star camera stream
             record_step = RECORD.start();
             BUTTONS.UNO.classList.add( 'active-round' );
+            if( is_dark ) {
+                BUTTONS.UNO.classList.add( 'active-round-d' );
+            }
             this.classList.add('hide');
             RECORD.getMedia();
             break;
@@ -151,6 +166,10 @@ BUTTONS.START_B.addEventListener('click', function() {
         case 3: // save gifo
             BUTTONS.DOS.classList.remove( 'active-round' );
             BUTTONS.TRES.classList.add( 'active-round' );
+            if( is_dark ) {
+                BUTTONS.DOS.classList.remove( 'active-round-d' );
+                BUTTONS.TRES.classList.add( 'active-round-d' );
+            }
             RECORD.saveBlob();
             // record_step = 0;
             break;

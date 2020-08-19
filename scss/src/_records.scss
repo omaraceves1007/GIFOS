@@ -241,8 +241,6 @@
     }
 }
 
-/* DARK MODE STYLES */
-
 .bar-d {
     background-color: rgba($color: $white, $alpha: 1) !important;
 }
@@ -259,9 +257,18 @@
     border: solid 1px rgba($color: $primary, $alpha: 1) !important;
 }
 
+p.text-white::before {
+    color: $white !important;
+}
+
+
 button.button-d {
     border: solid 1px rgba($color: $white, $alpha: 1) !important;
     color: rgba($color: $white, $alpha: 1) !important;
+    &:hover {
+        color: rgba($color: $black, $alpha: 1) !important;
+        background-color: rgba($color: $white, $alpha: 1) !important;
+    }
 }
 
 /* 

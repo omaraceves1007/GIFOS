@@ -123,6 +123,16 @@
                 &:hover > i {
                     background-color: $white;
                 }
+                &.active {
+                    background-color: $active !important;
+                    border-color: $active !important;
+                    .icon-plus {
+                        background-color: $white !important;
+                    }
+                }    
+            }
+            &.active {
+                color: $active !important;
             }
         }
     }

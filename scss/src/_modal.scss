@@ -34,6 +34,12 @@
                     width: 100%;
                     padding-left: 5%;
                     padding-top: 3%;
+                    &:first-child {
+                        @extend %roboto-regular;
+                    }
+                    &:last-child {
+                        @extend %roboto-bold;
+                    }
                 }
             }
             .actions {

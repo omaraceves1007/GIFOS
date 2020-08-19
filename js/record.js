@@ -39,6 +39,10 @@ export function getMedia() {
             DOC.START_B.classList.remove( 'hide' );
             DOC.UNO.classList.remove( 'active-round' );
             DOC.DOS.classList.add( 'active-round' );
+            if ( isDark() ) {
+                DOC.UNO.classList.remove( 'active-round-d' );
+                DOC.DOS.classList.add( 'active-round-d' );    
+            }
         } )
         .catch( err => console.log(`${ err.name }: ${ err.message } `) );
 }
@@ -73,19 +77,19 @@ export function saveBlob() {
     DOC.START_B.classList.add( 'hide' );
     let gif = createForm( BLOB );
     uploading();
-    // GIPHY.getById( resp.data.id ).then( data => {
-    //     setTimeout(()=>{
+    GIPHY.getById( resp.data.id ).then( data => {
+        setTimeout(()=>{
             // saveMis( data );
-    //         console.log('save', data)
-    //         uploaded( data );
-    //     },3000);
-    // } );
-    GIPHY.upload( gif ).then( info => {
-        GIPHY.getById( info.id ).then( data => {
-            saveMis( data );
+            console.log('save', data)
             uploaded( data );
-        } );
+        },1000);
     } );
+    // GIPHY.upload( gif ).then( info => {
+    //     GIPHY.getById( info.id ).then( data => {
+    //         saveMis( data );
+    //         uploaded( data );
+    //     } );
+    // } );
 }
 
 export function reset(){
@@ -103,6 +107,9 @@ export function reset(){
     DOC.START_B.innerText = 'COMENZAR';
     DOC.START_B.classList.remove( 'hide' );
     DOC.TRES.classList.remove( 'active-round' );
+    if ( isDark() ) {
+        DOC.TRES.classList.remove( 'active-round-d' );
+    }
     setStep( 0 );
     STREAM = null;
     VIDEO = null;
@@ -183,21 +190,28 @@ function saveMis( item ) {
 function uploading(){
     let video = DOC.DOC.getElementById( 'video' );
     let container = INSERT.createEle( 'div', 'onload' );
-        container.innerHTML = `<i class="icon icon-load"></i>`;
+        container.classList.add( 'fadeIn' );
+        container.innerHTML = `<i class="icon icon-load rotating"></i>`;
     video.appendChild( container );
 }
 
 function uploaded( gif ) {
     let video = DOC.DOC.getElementById( 'video' );
+    let loading = DOC.DOC.querySelector( 'div.onload' );
     let container = INSERT.createEle( 'div', 'load' );
-        container.innerHTML = `<i class="icon icon-check"></i>`;
+        container.innerHTML = `<i class="icon icon-check success"></i>`;
     let cont_buttons = INSERT.createEle( 'div', 'load-buttons' );
     let buttons = [ createButton( 'download', directDownload, gif ),
                     createButton( 'link', getlink, gif ) ];
         buttons.forEach( button => cont_buttons.appendChild( button) );
-    container.appendChild( cont_buttons );
-    DOC.DOC.querySelector( 'div.onload' ).classList.add( 'hide' );
-    video.append( container );
+        container.appendChild( cont_buttons );
+        loading.classList.add( 'fadeOut' );
+        setTimeout( () =>{ 
+            loading.classList.add( 'hide' );
+            container.classList.add( 'fadeIn' );
+            video.append( container );
+        }, 500 );
+        
 }
 
 function createButton( type, func, gif ) {
@@ -233,7 +247,13 @@ function directDownload( gif ) {
     } );
 }
 
-
+function isDark() {
+    const HEADER = DOC.DOC.querySelector('header');
+    if( HEADER.classList[0] === 'dark' ) {
+        return true;
+    }
+    return false;
+}
 // response format
 const resp = {
     "data": {

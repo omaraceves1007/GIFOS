@@ -17,6 +17,7 @@ export const START_B = DOC.querySelector('.button-end button');
 export const RESULTS = DOC.getElementById('result-section');
 export const FAVS = DOC.getElementById('fav-section');
 export const MIS = DOC.getElementById('mis-section');
+export const RECORD = DOC.getElementById('record-section');
 export const VIDEO = DOC.getElementById('video');
 export const UNO = DOC.getElementById('1');
 export const DOS = DOC.getElementById('2');

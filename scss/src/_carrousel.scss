@@ -1,3 +1,7 @@
+.carrousel-section p{
+    @extend %roboto-regular;
+}
+
 .carrousel{
     @include size(90%, 200px);
     margin: 8% auto;
