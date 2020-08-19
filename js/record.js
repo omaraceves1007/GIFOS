@@ -3,12 +3,15 @@ import * as INSERT from './inserts.js';
 import * as GIPHY from './giphy.js';
 import * as STORAGE from './storage.js';
 import * as GIFS from './gifs.js';
+import { setStep } from './script.js';
+
 
 const MEDIA = window.navigator;
 let STREAM;
 let interval;
 let VIDEO;
 let BLOB;
+let MEDIA_STREAM;
 
 export function start() {
     let container = DOC.DOC.querySelector( 'div.frame' );
@@ -27,6 +30,7 @@ export function getMedia() {
     insertVideoTag();
     MEDIA.mediaDevices.getUserMedia( constraints )
         .then( (stream) => {
+            MEDIA_STREAM = stream;
             VIDEO = DOC.DOC.querySelector( "video" );
             VIDEO.srcObject = stream;
             VIDEO.play();
@@ -55,10 +59,10 @@ export function endRecord() {
     clearInterval( interval );
     DOC.TIME.setAttribute( 'data', 'REPETIR CAPTURA' );
     DOC.TIME.classList.add( 'again' );
-    DOC.TIME.onclick = () => {  console.log( 'click para regrabar ' ); };
+    DOC.TIME.onclick = () => { recordAgain(); };
     // VIDEO.srcObject.stop();
     DOC.START_B.innerText = 'SUBIR GIFO';
-
+    return 3;
 }
 
 export function saveBlob() {
@@ -71,20 +75,39 @@ export function saveBlob() {
     uploading();
     // GIPHY.getById( resp.data.id ).then( data => {
     //     setTimeout(()=>{
-    //         saveMis( data );
+            // saveMis( data );
+    //         console.log('save', data)
     //         uploaded( data );
     //     },3000);
     // } );
-    saveMis( resp.data );
-    setTimeout(()=>{
-        uploaded();
-    },3000);
     GIPHY.upload( gif ).then( info => {
         GIPHY.getById( info.id ).then( data => {
             saveMis( data );
             uploaded( data );
         } );
     } );
+}
+
+export function reset(){
+    let container = DOC.DOC.querySelector( 'div.frame' );
+        container.innerHTML = '';
+    let title = INSERT.createEle( 'h3', 'title' );
+        title.innerHTML = ' Aquí podrás <br> crear tus propios <span>GIFOS</span> ';
+    let text = INSERT.createEle( 'p' );
+        text.innerHTML = `¡Crea tu GIFO en sólo 3 pasos!<br>
+                        (sólo necesitas una cámara para grabar un vidéo)`;
+    let vid_container  = INSERT.createEle( 'div' );
+        vid_container.id = "video";
+        vid_container.innerHTML = `<video></video>`;
+    container.append( title, text, vid_container );
+    DOC.START_B.innerText = 'COMENZAR';
+    DOC.START_B.classList.remove( 'hide' );
+    DOC.TRES.classList.remove( 'active-round' );
+    setStep( 0 );
+    STREAM = null;
+    VIDEO = null;
+    MEDIA_STREAM = null;
+    BLOB = null;
 }
 
 function newStream( stream ) {
@@ -102,7 +125,6 @@ function newStream( stream ) {
 
 function insertVideoTag() {
     let container = DOC.DOC.querySelector( 'div.frame' );
-        // container.innerHTML = '';
     let video = INSERT.createEle( 'div' );
         video.id = 'video';
         video.innerHTML = `<video></video>`;   
@@ -125,6 +147,14 @@ function timer( element ) {
     },1000);
 }
 
+function recordAgain() {
+    STREAM = newStream( MEDIA_STREAM );
+    STREAM.startRecording();
+    timer( DOC.TIME );
+    setStep( 2 );
+    DOC.START_B.innerText = 'FINALIZAR';
+}
+
 function createForm( blob ) {
     let form = new FormData();
     form.append('file', blob, new Date().getTime.toString() );
@@ -137,7 +167,7 @@ function createForm( blob ) {
 function saveMis( item ) {
     let mis_storage = [];
     let gif = {
-        gif: new GIFS.GIFOS( item.id, item.title, item.images.downsized_large.url, item.username ),
+        gif: new GIFS.GIFOS( item.id, item.title, item.images.downsized_large.url, item.user.username ),
         exist : true
     };
     if( STORAGE.existData( 'mis' ) ) {
@@ -203,10 +233,11 @@ function directDownload( gif ) {
     } );
 }
 
+
 // response format
 const resp = {
     "data": {
-        "id": "YiIGgI3QblMwU"
+        "id": "84GNxlATOZVSM"
     },
     "meta": {
         "msg": "OK",

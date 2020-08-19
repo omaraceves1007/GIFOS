@@ -1,6 +1,8 @@
 // import * as STORAGE from './storage.js';
 import * as DOC from './buttons.js';
 import * as INSERT from './inserts.js';
+import * as STORAGE from './storage.js';
+import * as GIFOS from './gifs.js';
 
 let start = 0;
 let end = 12;
@@ -37,18 +39,19 @@ export function emptySecction( idIcon, dark ) {
 // create favorites secction whit data
 export function insertfavs ( list, idIcon, dark ) {
     let section = idIcon === 'fav' ? favorites : misGifos;
+    let title_text = idIcon === 'fav' ? 'Favoritos' : 'Mis GIFOS';
     section.innerHTML = '';
     section.classList.remove( 'hide' );
     let icon = INSERT.createEle( 'i', 'icon' );
         icon.classList.add( `icon-${idIcon}` );
     let title = INSERT.createEle( 'h3', 'title' );
-        title.innerHTML = `<strong>Favoritos</strong>`;
+        title.innerHTML = `<strong>${ title_text }</strong>`;
         if( dark ){
             title.classList.add( 'text-white' );
         }
     let container = INSERT.createEle( 'div', 'grid' );
         container.classList.add( 'fav-items' );
-    let cardsInner = cards( list, dark );
+    let cardsInner = cards( list, dark, idIcon );
         cardsInner.forEach( card => {
             container.appendChild( card );
             card.onload = () => { console.log('se cargo todo') };
@@ -60,7 +63,7 @@ export function insertfavs ( list, idIcon, dark ) {
 }
 
 // Create Card  gifs
-function cards ( list, dark ) {
+function cards ( list, dark, idIcon ) {
     let cards_html = [];
     let short_list = list;
     if( list.length > end ){
@@ -78,7 +81,7 @@ function cards ( list, dark ) {
             p1.innerHTML = item.user;
         let p2 = INSERT.createEle( 'p', 'title-gif' );
             p2.innerHTML = item.title;
-        let buttons = searchButtons( item, list, dark );
+        let buttons = searchButtons( item, list, dark, idIcon );
         card.appendChild ( image );
         card.appendChild (buttons );
         card.appendChild ( p1 );
@@ -90,10 +93,12 @@ function cards ( list, dark ) {
 }
 
 // Insert Buttons card
-function searchButtons( item, list, dark ) {
+function searchButtons( item, list, dark, idIcon ) {
     let cont = INSERT.createEle( 'div', 'hov' );
     let buttons = INSERT.createEle( 'div', 'buttons' );
-    let but_arr = [ createButton( 'addFavorite', INSERT.TYPES_B.fava, item ),
+    let fisrt_b = idIcon === 'fav' ? 'addFavorite' : deleteGif;
+    let icon = idIcon === 'fav' ? INSERT.TYPES_B.fava : INSERT.TYPES_B.trash;
+    let but_arr = [ createButton( fisrt_b, icon, item ),
                     createButton( INSERT.download, INSERT.TYPES_B.download, item ),
                     createButton( INSERT.max, INSERT.TYPES_B.max, item, list, dark, true ) ];
     but_arr.forEach( button  => buttons.appendChild( button ) );
@@ -148,4 +153,20 @@ function insertMore ( list, dark, idIcon ) {
     if( list.length > end ) {
         section.appendChild( seeMore( list, idIcon ) );
     }
+}
+
+function deleteGif( item ) {
+    let id = item.id;
+    let mis = JSON.parse( STORAGE.getData( 'mis' ) );
+        mis.forEach( gif => {
+            if( gif.gif.id === id ) {
+                gif.exist = false;
+            }
+        } );
+    STORAGE.save( { key: 'mis', 
+                    data: mis
+                } );
+    let news = GIFOS.arrayFromMis( mis );
+    insertfavs( news, 'mis', false );
+    console.log('delete', item);
 }

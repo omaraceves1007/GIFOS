@@ -201,11 +201,6 @@ export function addFavorite( gif ) {
     alert( '¡Agregado a favoritos!' );
 }
 
-//Delete from fav array
-function trash( gif ) {
-    console.log('trash', gif)
-}
-
 // Max images
 export function max( gif, gifs, dark, fav ) {
     const HEADER = DOC.DOC.querySelector('header');
@@ -234,10 +229,7 @@ export function download( gif ) {
     } );
 }
 
-function link( gif ) {
-    console.log('link', gif)
-}
-
+// Get blob to direct download
 export function getImage( url ) {
     return fetch( url ).then( res => res.blob() );
 }

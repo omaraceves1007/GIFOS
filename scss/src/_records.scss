@@ -155,7 +155,6 @@
             justify-content: center;
 
             button {
-                cursor: pointer;
                 border: solid 1px $primary;
                 border-radius: 50%;
                 padding: 3px 8px;
@@ -241,6 +240,8 @@
         color: rgba($color: $white, $alpha: 1);
     }
 }
+
+/* DARK MODE STYLES */
 
 .bar-d {
     background-color: rgba($color: $white, $alpha: 1) !important;

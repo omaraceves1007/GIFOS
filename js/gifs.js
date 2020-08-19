@@ -1,9 +1,9 @@
 export class GIFOS {
     constructor( id, title, url, user) {
         this.id = id;
-        this.title = title === "" ? 'None' : title;
+        this.title = title === "" || title === undefined ? 'Sin titulo' : title;
         this.url = url;
-        this.user = user === "" ? 'None' : user;
+        this.user = user === "" || user === undefined ? 'Sin nombre usuario' : user;
     }
 }
 
@@ -14,4 +14,14 @@ export function createArray( gifs ) {
         arr.push( new_gif );
     });
     return arr;
+}
+
+export function arrayFromMis( mis ) {
+    let new_arr = [];
+    mis.forEach( item => {
+        if( item.exist ){
+            new_arr.push( new GIFOS( item.gif.id, item.gif.title, item.gif.url, item.gif.user ) );
+        }
+    } );
+    return new_arr;
 }

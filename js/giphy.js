@@ -29,7 +29,7 @@ export function getTrending() {
 }
 
 export function search( word, offset ) {
-    let url = `${ BASE_URL }search?api_key=${ KEY }&q=${ word }&limit=12&offset=${ offset ? offset : 0}`;
+    let url = `${ BASE_URL }/search?api_key=${ KEY }&q=${ word }&limit=12&offset=${ offset ? offset : 0}`;
     return fetch( url ).then( e => e.json() )
         .then( respResult );
 }

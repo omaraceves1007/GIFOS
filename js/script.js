@@ -47,6 +47,9 @@ BUTTONS.HOME.addEventListener('click',() =>{
     BUTTONS.DOC.getElementById('mis-section').classList.add('hide');
     BUTTONS.DOC.getElementById('carrousel-section').classList.remove('hide');
     BUTTONS.DOC.getElementById('record-section').classList.add('hide');
+    if( record_step !== 0 ) {
+        RECORD.reset();
+    }
 })
 
 // botones de menu hamburguesa
@@ -94,6 +97,9 @@ BUTTONS.FAVORITES_B.addEventListener('click', () =>{
     } else {
         FAVS.emptySecction( 'fav', is_dark );
     }
+    if( record_step !== 0 ) {
+        RECORD.reset();
+    }
 });
 
 // Show my gifos secction
@@ -106,16 +112,15 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     BUTTONS.DOC.getElementById('record-section').classList.add('hide');
     if ( STORAGE.existData( 'mis' ) ) {
         const mis = STORAGE.getData( 'mis' );
-        mis_arr = JSON.parse( mis );
+        mis_arr = GIFOS.arrayFromMis( JSON.parse( mis ) );
         FAVS.insertfavs( mis_arr, 'mis', is_dark );
+        
     } else {
         FAVS.emptySecction( 'mis', is_dark );
     }
-    // let ids = 'M33UV4NDvkTHa,f9XgYLDBg1HCDAldN7,UTSDWUuKQvZo6BT6U3,tGbhyv8Wmi4EM,50i6YRZxEiqkM,cwHQOWenYfnQA,YiIGgI3QblMwU,JOXHRcd3Llz5m,WUeeGwT8d8KFa,84GNxlATOZVSM,RLDGwhf7JmPX8oamhq,UMTB7bS0JpET6J3TguZh2TQJJm'
-    // GIPHY.getByIds( ids ).then( mis_gifos => {
-    //     if( mis_gifos )
-    //     mis_arr =
-    // } );
+    if( record_step !== 0 ) {
+        RECORD.reset();
+    }
 });
 
 // Sow new secction 
@@ -139,18 +144,15 @@ BUTTONS.START_B.addEventListener('click', function() {
             break;
         case 1:// stard record
             record_step = RECORD.startRecord();
-            console.warn(record_step,' al dar click en grabar')
             break;
         case 2:// stop record
-            RECORD.endRecord();
-            record_step = 3;
+            record_step = RECORD.endRecord();
             break;
         case 3: // save gifo
-            console.log(record_step);
             BUTTONS.DOS.classList.remove( 'active-round' );
             BUTTONS.TRES.classList.add( 'active-round' );
             RECORD.saveBlob();
-            record_step = 0;
+            // record_step = 0;
             break;
     }
 });
@@ -216,3 +218,7 @@ BUTTONS.INPUT_SEARCH.addEventListener( 'keyup', function(e) {
         } );
     }
 });
+
+export function setStep( value ) {
+    record_step = value;
+}
