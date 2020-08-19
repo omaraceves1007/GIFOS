@@ -137,7 +137,8 @@ function seeMore( list, idIcon ) {
 
 function insertMore ( list, dark, idIcon ) {
     let section = idIcon === 'fav' ? favorites : misGifos;
-    let container = DOC.DOC.querySelector( "div.grid.fav-items" );
+    let container = idIcon === 'fav' ? DOC.DOC.querySelector( "#fav-section div.grid.fav-items" ) :
+                                    DOC.DOC.querySelector( "#mis-section div.grid.fav-items" );
     let see = idIcon === 'fav' ? DOC.DOC.querySelector( '#fav-section div.ver-mas' ) : 
                                 DOC.DOC.querySelector( '#mis-section div.ver-mas' );
     see.remove();
@@ -168,5 +169,4 @@ function deleteGif( item ) {
                 } );
     let news = GIFOS.arrayFromMis( mis );
     insertfavs( news, 'mis', false );
-    console.log('delete', item);
 }
