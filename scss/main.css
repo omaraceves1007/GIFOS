@@ -1689,18 +1689,21 @@ footer.dark {
   position: absolute;
   top: 23%;
   left: 1%;
+  width: 11%;
 }
 
 .record-container > div .ligth {
   position: absolute;
   top: 26.5%;
   left: 11.85%;
+  width: 6.6%;
 }
 
 .record-container > div .cint {
   position: absolute;
   right: 2%;
   bottom: 19%;
+  width: 12.5%;
 }
 
 .record-container > div .frame {
@@ -1835,7 +1838,7 @@ footer.dark {
   width: 100%;
   height: 9%;
   z-index: 3;
-  margin-top: 37%;
+  margin-top: 58vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1884,7 +1887,7 @@ footer.dark {
   height: 5px;
   background-color: #572ee5;
   border-radius: 50px;
-  margin-top: 41.5%;
+  margin-top: 65vh;
   left: 15%;
 }
 
@@ -1893,7 +1896,7 @@ footer.dark {
   height: auto;
   position: absolute;
   text-align: center;
-  bottom: 9%;
+  bottom: 7%;
 }
 
 .record-container > div .button-end button {
@@ -1903,7 +1906,7 @@ footer.dark {
   border: solid 1px #572ee5;
   background-color: transparent;
   color: #572ee5;
-  width: 10%;
+  width: 12%;
 }
 
 .record-container > div .button-end button:hover {
