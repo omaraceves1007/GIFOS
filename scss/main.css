@@ -1704,8 +1704,8 @@ footer.dark {
 }
 
 .record-container > div .frame {
-  width: 688px;
-  height: 390px;
+  width: 61%;
+  height: 67%;
   position: absolute;
   top: 5%;
   left: 19%;
@@ -1714,24 +1714,25 @@ footer.dark {
 
 .record-container > div .frame:before {
   content: "";
-  width: 646px;
-  height: 348px;
+  width: 93.4%;
+  height: 89.4%;
   position: absolute;
-  top: 21px;
-  left: 21px;
+  top: 5.7%;
+  left: 3.2%;
   z-index: 2;
   background-color: #FFFFFF;
 }
 
 .record-container > div .frame:after {
   content: "";
-  width: 648px;
-  height: 350px;
+  width: 94%;
+  height: 90.4%;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 5.2%;
+  left: 2.9%;
   z-index: 1;
-  background-image: linear-gradient(90deg, transparent 20px, #FFFFFF 20px, #FFFFFF 628px, transparent 628px), linear-gradient(#50E3C2 20px, transparent 20px, transparent 330px, #50E3C2 330px);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(2.9%, transparent), color-stop(2.9%, #FFFFFF), color-stop(96.5%, #FFFFFF), color-stop(96.5%, transparent)), -webkit-gradient(linear, left top, left bottom, color-stop(5.2%, #50E3C2), color-stop(5.2%, transparent), color-stop(93.5%, transparent), color-stop(93.5%, #50E3C2));
+  background-image: linear-gradient(90deg, transparent 2.9%, #FFFFFF 2.9%, #FFFFFF 96.5%, transparent 96.5%), linear-gradient(#50E3C2 5.2%, transparent 5.2%, transparent 93.5%, #50E3C2 93.5%);
 }
 
 .record-container > div .frame .title {
@@ -1756,24 +1757,24 @@ footer.dark {
 
 .record-container > div .frame #video {
   position: absolute;
-  width: 480px;
-  height: 320px;
+  width: 70%;
+  height: 82%;
   z-index: 4;
   top: 35px;
   left: 104px;
 }
 
 .record-container > div .frame #video video {
-  width: 480px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
 }
 
 .record-container > div .frame #video div {
   position: absolute;
   top: 0;
   left: 0;
-  width: 480px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
   background-color: rgba(87, 46, 229, 0.6);
 }
 
@@ -1796,8 +1797,8 @@ footer.dark {
 }
 
 .record-container > div .frame #video div.load .load-buttons {
-  width: 480px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
   text-align: end;
   padding: 2%;
   background-color: transparent;
@@ -1832,7 +1833,7 @@ footer.dark {
 .record-container > div .steps {
   position: absolute;
   width: 100%;
-  height: 50px;
+  height: 9%;
   z-index: 3;
   margin-top: 37%;
   display: -webkit-box;

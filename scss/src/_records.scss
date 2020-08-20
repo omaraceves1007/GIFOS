@@ -29,7 +29,7 @@
         }
 
         .frame {
-            @include size(688px, 390px);
+            @include size(61%, 67%);//688px, 390px
             position: absolute;
             top: 5%;
             left: 19%;
@@ -37,23 +37,23 @@
 
             &:before {
                 content: "";
-                @include size(646px, 348px);
+                @include size(93.4%, 89.4%);// 646px, 348px
                 position: absolute;
-                top: 21px;
-                left: 21px;
+                top: 5.7%;//21px
+                left: 3.2%;//21px
                 z-index: 2;
                 background-color: $white;
             }
 
             &:after {
                 content: "";
-                @include size(648px, 350px);
+                @include size(94%, 90.4%);//648px, 350px
                 position: absolute;
-                top: 20px;
-                left: 20px;
+                top: 5.2%;//20px
+                left: 2.9%;//20px
                 z-index: 1;
-                background-image: linear-gradient(90deg, transparent 20px, $white 20px, $white 628px, transparent 628px),
-                    linear-gradient($secondary 20px, transparent 20px, transparent 330px, $secondary 330px);
+                background-image: linear-gradient(90deg, transparent 2.9%, $white 2.9%, $white 96.5%, transparent 96.5%),// 20px 20px 628px 628px
+                    linear-gradient($secondary 5.2%, transparent 5.2%, transparent 93.5%, $secondary 93.5%); // 20px 330px
             }
 
             .title {
@@ -80,21 +80,21 @@
 
             #video {
                 position: absolute;
-                @include size(480px, 320px);
+                @include size(70%, 82%);//480px, 320px
                 z-index: 4;
                 top: 35px;
                 left: 104px;
 
                 // background-color: red;
                 video {
-                    @include size(480px, 320px);
+                    @include size(100%, 100%);// 480px, 320px
                 }
 
                 div{
                     position: absolute;
                     top: 0;
                     left: 0;
-                    @include size(480px, 320px);
+                    @include size(100%, 100%); //480px, 320px
                     background-color: rgba($color: $primary, $alpha: 0.6);
                     &.onload::before, &.load::before{
                         position: absolute;
@@ -114,7 +114,7 @@
                     }
                     &.load{
                         .load-buttons{
-                            @include size(480px, 320px);
+                            @include size(100%, 100%);// 480px, 320px
                             text-align: end;
                             padding: 2%;
                             background-color: transparent;
@@ -147,7 +147,7 @@
 
         .steps {
             position: absolute;
-            @include size(100%, 50px);
+            @include size(100%, 9%);//50px
             z-index: 3;
             margin-top: 37%;
             display: flex;
@@ -191,7 +191,7 @@
 
         .bar {
             position: absolute;
-            @include size(70%, 5px);
+            @include size(70%, 5px);//1%
             background-color: rgba($color: $primary, $alpha: 1);
             border-radius: 50px;
             margin-top: 41.5%;
