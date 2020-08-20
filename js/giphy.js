@@ -1,4 +1,4 @@
-const KEY = 'ZGixrwRe4p2KRC7dadqj5o1gKO1ks93a'; // 'RVMI7UVuYe5FIgQ8wXDahFt62ndYR0k5';
+const KEY = 'ZGixrwRe4p2KRC7dadqj5o1gKO1ks93a';
 const BASE_URL = 'https://api.giphy.com/v1/gifs';
 const BASE_TRENDING = 'https://api.giphy.com/v1/';
 const RANDOM = `${ BASE_URL }/random?api_key=${ KEY }`;
@@ -9,8 +9,6 @@ const UPLOAD = `https://upload.giphy.com/v1/gifs?api_key=${ KEY }`;
 let ids = 'M33UV4NDvkTHa,f9XgYLDBg1HCDAldN7';
 const GIFS = `${BASE_URL}?api_key=${KEY}&ids=`;
 
-// api.giphy.com/v1/gifs/search/tags
-// api.giphy.com/v1/trending/searches
 export function getRandom() {
     return fetch( RANDOM ).then( e => e.json() );
 }

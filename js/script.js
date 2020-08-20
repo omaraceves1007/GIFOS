@@ -76,12 +76,6 @@ BUTTONS.OPEN.addEventListener('click', (event) => {
 
 BUTTONS.CLOSE.addEventListener('click', (event) => {
     close(event);
-    // event.target.style.display = 'none';
-    // MENU.classList.remove('fadeInDown');
-    // MENU.classList.add('fadeOutUp');
-    // setTimeout(() => MENU.style.display = 'none',1000);
-    // BUTTONS.OPEN.style.display = 'block';
-    // BUTTONS.DOC.body.style.overflow = '';
 });
 
 // close menu 

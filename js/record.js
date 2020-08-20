@@ -57,14 +57,11 @@ export function startRecord() {
 export function endRecord() {
     STREAM.stopRecording(function() {
         BLOB = STREAM.getBlob();
-        // invokeSaveAsDialog(blob);
-        // console.log(BLOB, 'finalizo');
     });
     clearInterval( interval );
     DOC.TIME.setAttribute( 'data', 'REPETIR CAPTURA' );
     DOC.TIME.classList.add( 'again' );
     DOC.TIME.onclick = () => { recordAgain(); };
-    // VIDEO.srcObject.stop();
     DOC.START_B.innerText = 'SUBIR GIFO';
     return 3;
 }
@@ -77,13 +74,6 @@ export function saveBlob() {
     DOC.START_B.classList.add( 'hide' );
     let gif = createForm( BLOB );
     uploading();
-    // GIPHY.getById( resp.data.id ).then( data => {
-    //     setTimeout(()=>{
-    //         // saveMis( data );
-    //         console.log('save', data)
-    //         uploaded( data );
-    //     },1000);
-    // } );
     GIPHY.upload( gif ).then( info => {
         GIPHY.getById( info.id ).then( data => {
             saveMis( data );
@@ -253,14 +243,4 @@ function isDark() {
         return true;
     }
     return false;
-}
-// response format
-const resp = {
-    "data": {
-        "id": "84GNxlATOZVSM"
-    },
-    "meta": {
-        "msg": "OK",
-        "status": 200
-    }
 }

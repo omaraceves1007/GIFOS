@@ -160,10 +160,6 @@ function search( id, dark ) {
     GIPHY.search( id ).then( gifs => {
         if(gifs) {
             let search_arr = GIFOS.createArray( gifs );
-            // STORAGE.save({
-            //     key: 'search',
-            //     data: search_arr.toString()
-            // });
             insertResults( id, search_arr, dark );
             SEARCHS.deleteClass();
         }
@@ -233,17 +229,6 @@ export function download( gif ) {
 export function getImage( url ) {
     return fetch( url ).then( res => res.blob() );
 }
-
-const tempButtons = `<div class="buttons">
-<button class="button-t"><i class="icon icon-Hfav"></i></button>
-<button class="button-t"><i class="icon icon-Afav"></i></button>
-<button class="button-t"><i class="icon icon-trash"></i></button>
-<button class="button-t"><i class="icon icon-max"></i></button>
-<button class="button-t"><i class="icon icon-download"></i></button>
-<button class="button-t"><i class="icon icon-link"></i></button>
-</div>`;
-
-// aux functions
 
 // Create DOC.DOC element function
 export function createEle( element, clas ) {

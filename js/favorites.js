@@ -1,4 +1,3 @@
-// import * as STORAGE from './storage.js';
 import * as DOC from './buttons.js';
 import * as INSERT from './inserts.js';
 import * as STORAGE from './storage.js';
