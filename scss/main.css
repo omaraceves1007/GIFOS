@@ -1436,11 +1436,11 @@ input#buscar.dark-in {
   }
   .gif-carrousel {
     margin-right: 6%;
-    width: 357px;
+    width: 48.7vh;
     height: 275px;
   }
   .gif-carrousel img, .gif-carrousel .car-hover {
-    width: 357px;
+    width: 48.7vh;
     height: 275px;
   }
   .gif-carrousel .car-hover {
