@@ -100,9 +100,9 @@
 
     .gif-carrousel{
         margin-right: 6%;
-        @include size(357px , 275px );
+        @include size(48.7vh, 275px );
         img, .car-hover {
-            @include size(357px , 275px );
+            @include size(48.7vh, 275px );
         } 
         .car-hover {
             display: block;
