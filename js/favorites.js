@@ -158,15 +158,21 @@ function insertMore ( list, dark, idIcon ) {
 
 function deleteGif( item ) {
     let id = item.id;
-    let mis = JSON.parse( STORAGE.getData( 'mis' ) );
-        mis.forEach( gif => {
-            if( gif.gif.id === id ) {
-                gif.exist = false;
-            }
-        } );
-    STORAGE.save( { key: 'mis', 
-                    data: mis
-                } );
-    let news = GIFOS.arrayFromMis( mis );
-    insertfavs( news, 'mis', false );
+    let del = confirm(`¿Desea eliminar este elemento?`);
+    if( del ){
+        let mis = JSON.parse( STORAGE.getData( 'mis' ) );
+            mis.forEach( gif => {
+                if( gif.gif.id === id ) {
+                    gif.exist = false;
+                }
+            } );
+        STORAGE.save( { key: 'mis', 
+                        data: mis
+                    } );
+        alert('¡Elimiado!');
+        let news = GIFOS.arrayFromMis( mis );
+        insertfavs( news, 'mis', false );
+    } else{
+        alert('¡Cancelado!');
+    }
 }
