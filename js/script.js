@@ -26,6 +26,12 @@ WIN.onload = () => {
         carrousel = GIFOS.createArray( gifs );
         CAR.initCarrousel( carrousel );
     });
+    if( STORAGE.existData( 'dark' ) ){
+        is_dark = JSON.parse(STORAGE.getData( 'dark' ));
+        if( is_dark ) {
+            dark();
+        }
+    }
 }
 
 // limpiea de clases extras y estilos a elementos de menu
@@ -53,6 +59,9 @@ BUTTONS.HOME.addEventListener('click',() =>{
     if (BUTTONS.FAVORITES_B.classList.contains('active')) { BUTTONS.FAVORITES_B.classList.remove( 'active' ) };
     if (BUTTONS.MY_GIFOS_B.classList.contains('active')) { BUTTONS.MY_GIFOS_B.classList.remove( 'active' ) };
     if (BUTTONS.PLUS_B.classList.contains('active')) { BUTTONS.PLUS_B.classList.remove( 'active' ) };
+    if( window.screen.width < 550 ){
+        close();
+    }
 })
 
 // botones de menu hamburguesa
@@ -66,13 +75,28 @@ BUTTONS.OPEN.addEventListener('click', (event) => {
 });
 
 BUTTONS.CLOSE.addEventListener('click', (event) => {
-    event.target.style.display = 'none';
+    close(event);
+    // event.target.style.display = 'none';
+    // MENU.classList.remove('fadeInDown');
+    // MENU.classList.add('fadeOutUp');
+    // setTimeout(() => MENU.style.display = 'none',1000);
+    // BUTTONS.OPEN.style.display = 'block';
+    // BUTTONS.DOC.body.style.overflow = '';
+});
+
+// close menu 
+function close( event ) {
+    if(event) {
+        event.target.style.display = 'none';
+    } else{
+        BUTTONS.CLOSE.style.display = 'none';
+    }
     MENU.classList.remove('fadeInDown');
     MENU.classList.add('fadeOutUp');
     setTimeout(() => MENU.style.display = 'none',1000);
     BUTTONS.OPEN.style.display = 'block';
     BUTTONS.DOC.body.style.overflow = '';
-});
+}
 
 // botones de secciones de menu
 BUTTONS.DARK_B.addEventListener('click', () => {
@@ -83,6 +107,7 @@ BUTTONS.DARK_B.addEventListener('click', () => {
         light();
         is_dark = false;
     }
+    STORAGE.save( { key: 'dark', data: is_dark } );
 });
 
 // Show Favorites secction
@@ -105,6 +130,9 @@ BUTTONS.FAVORITES_B.addEventListener('click', () =>{
     }
     if( record_step !== 0 ) {
         RECORD.reset();
+    }
+    if( window.screen.width < 550 ){
+        close();
     }
 });
 
@@ -129,6 +157,9 @@ BUTTONS.MY_GIFOS_B.addEventListener('click', () =>{
     }
     if( record_step !== 0 ) {
         RECORD.reset();
+    }
+    if( window.screen.width < 550 ){
+        close();
     }
 });
 
